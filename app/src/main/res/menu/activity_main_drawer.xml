@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="@string/home" />
+    <item
+        android:id="@+id/nav_org"
+        android:icon="@drawable/ic_pyramid_chart"
+        android:title="@string/organ" />
+    <item
+        android:id="@+id/nav_sops"
+        android:icon="@drawable/ic_book"
+        android:title="@string/sops" />
+    <item
+        android:id="@+id/nav_order"
+        android:icon="@drawable/ic_baseline_menu_book_24"
+        android:title="@string/orderss" />
+    <item
+        android:id="@+id/nav_training"
+        android:icon="@drawable/ic_baseline_accessibility_new_24"
+        android:title="@string/training2" />
+    <item
+        android:id="@+id/nav_help"
+        android:icon="@drawable/ic_baseline_call_24"
+        android:title="@string/help2" />
+    <item
+        android:id="@+id/nav_cdcom"
+        android:icon="@drawable/ic_baseline_group_24"
+        android:title="@string/cdcom2" />
+    <item
+        android:id="@+id/nav_fire"
+        android:icon="@drawable/ic_fire"
+        android:title="@string/fire2" />
+    <item
+        android:id="@+id/nav_rescue"
+        android:icon="@drawable/ic_help"
+        android:title="@string/resque2" />
+    <item
+        android:id="@+id/nav_firstaid"
+        android:icon="@drawable/ic_first_aid_kit"
+        android:title="@string/firstaid2" />
+    <item
+        android:id="@+id/nav_disaster"
+        android:icon="@drawable/ic_natural_disaster"
+        android:title="@string/disaster2" />
+    <item
+        android:id="@+id/nav_selfdefence"
+        android:icon="@drawable/ic_baseline_sports_kabaddi_24"
+        android:title="@string/selfdefence2" />
+    <item
+        android:id="@+id/nav_contact"
+        android:icon="@drawable/ic_fax"
+        android:title="@string/contact2" />
+    <item
+        android:id="@+id/nav_nearbyhospital"
+        android:icon="@drawable/ic_baseline_add_location_24"
+        android:title="@string/nearbyhospital2" />
+    <item
+        android:id="@+id/nav_cdofc"
+        android:icon="@drawable/ic_baseline_location_on_24"
+        android:title="@string/nearbycdofc2" />
+    <item
+        android:id="@+id/nav_blog"
+        android:icon="@drawable/ic_notes"
+        android:title="@string/cdblog" />
+    <item
+        android:id="@+id/nav_apply"
+        android:icon="@drawable/ic_submit"
+        android:title="@string/apply" />
+    <item
+        android:id="@+id/nav_cert"
+        android:icon="@drawable/ic_certificate"
+        android:title="@string/police" />
+    <item
+        android:id="@+id/nav_policy"
+        android:icon="@drawable/ic_baseline_policy_24"
+        android:title="@string/privacy" />
+
+    <item
+        android:id="@+id/nav_rate"
+        android:icon="@drawable/ic_baseline_star_24"
+        android:title="@string/rate_us" />
+
+    <!-- <item
+         android:id="@+id/nav_logout"
+         android:icon="@drawable/ic_baseline_power_settings_new_24"
+         android:title="Log Out" />-->
+
+</menu>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home">मुख्यपृष्ठ</string>
+    <string name="about">आमच्याबद्दल</string>
+    <string name="Support">आधार</string>
+    <string name="help">मदत</string>
+    <string name="rate_us">आम्हाला रेट करा</string>
+    <string name="english">English</string>
+    <string name="hindi">हिंदी</string>
+    <string name="navigation_drawer_open">Open navigation drawe</string>
+    <string name="navigation_drawer_close">Close navigation drawe</string>
+    <string name="mrf">पोलिस मित्र (एमआरएफ)</string>
+    <string name="training">प्रशिक्षण</string>
+    <string name="sops">एसओपी</string>
+    <string name="cdcom">सीडी-कॉम</string>
+    <string name="firstaid">प्रथमोपचार</string>
+    <string name="fire">आग</string>
+    <string name="resque">पुन्हा करा</string>
+    <string name="contact">आमच्याशी संपर्क साधा</string>
+    <string name="disaster">आपत्ती</string>
+    <string name="corgans">सीडी-ओआरजीएन</string>
+    <string name="order">ऑर्डर / सर्क्युलर</string>
+    <string name="selfdefence">स्वत: ची संरक्षण</string>
+    <string name="nearbyhospital">जवळच्या रुग्णालये</string>
+    <string name="nearbycdofc">जवळची सीडी ऑफिस</string>
+    <string name="nearbypolice">जवळचे पोलिस स्टेशन</string>
+    <string name="cdblog">सीडी ब्लॉग</string>
+    <string name="apply">नागरी संरक्षणासाठी ऑनलाईन अर्ज करा</string>
+    <string name="police">पोलिस क्लिअरन्स प्रमाणपत्र </string>
+    <string name="privacy">गोपनीयता धोरण</string>
+    <string name="organ">सीडी-ऑर्गन</string>
+    <string name="orderss">आदेश / परिपत्रके</string>
+    <string name="training2">प्रशिक्षण</string>
+    <string name="help2">मदत</string>
+    <string name="cdcom2">सीडी-कॉम</string>
+    <string name="fire2">आग</string>
+    <string name="resque2">बचाव</string>
+    <string name="firstaid2">प्रथमोपचार</string>
+    <string name="disaster2">आपत्ती</string>
+    <string name="selfdefence2">सेल्फ डिफेन्स</string>
+    <string name="contact2">आमच्याशी संपर्क साधा</string>
+    <string name="nearbyhospital2">जवळपास रुग्णालये</string>
+    <string name="nearbycdofc2">जवळील सीडी-ऑफिस</string>
+    <string name="marathi">मराठी</string>
+    <string name="courtesy">सौजन्य-दिल्ली नागरी संरक्षण</string>
+</resources>
