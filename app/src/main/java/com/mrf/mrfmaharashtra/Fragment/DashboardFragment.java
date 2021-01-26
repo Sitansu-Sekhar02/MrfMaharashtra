@@ -18,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.mrf.mrfmaharashtra.Activity.Utils;
@@ -35,6 +36,23 @@ public class DashboardFragment extends Fragment {
     CardView cd_hospital;
     CardView cd_civilofc;
     CardView cd_police;
+    CardView cd_orgn;
+    CardView cd_sops;
+    CardView cd_orders;
+    CardView cd_training;
+    CardView cd_help;
+    CardView cd_comm;
+    CardView cd_fire;
+    CardView cd_rescue;
+    CardView cd_firstaid;
+    CardView cd_disaster;
+    CardView cd_selfdef;
+    CardView cd_contactus;
+    CardView cd_extra;
+
+
+
+
 
     View view;
 
@@ -50,8 +68,146 @@ public class DashboardFragment extends Fragment {
         cd_hospital=view.findViewById(R.id.cd_hospital);
         cd_civilofc=view.findViewById(R.id.cd_cdofc);
         cd_police=view.findViewById(R.id.cd_policestation);
+        cd_orgn=view.findViewById(R.id.cd_orgn);
+        cd_sops=view.findViewById(R.id.cd_sops);
+        cd_orders=view.findViewById(R.id.cd_orders);
+        cd_training=view.findViewById(R.id.cd_training);
+        cd_help=view.findViewById(R.id.cd_help);
+        cd_comm=view.findViewById(R.id.cd_comm);
+        cd_fire=view.findViewById(R.id.cd_fire);
+        cd_rescue=view.findViewById(R.id.cd_rescue);
+        cd_firstaid=view.findViewById(R.id.cd_firstaid);
+        cd_disaster=view.findViewById(R.id.cd_disaster);
+        cd_selfdef=view.findViewById(R.id.cd_selfdef);
+        cd_contactus=view.findViewById(R.id.cd_contactus);
+        //cd_extra=view.findViewById(R.id.cd_extra);
 
+        cd_orgn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Utils.isNetworkConnectedMainThred(getActivity())) {
+                   // NearByHospital();
 
+                } else {
+                    // Toast.makeText(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
+                    Toasty.error(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
+
+                }
+            }
+        });
+        cd_sops.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Utils.isNetworkConnectedMainThred(getActivity())) {
+                    //NearByHospital();
+                    replaceFragmentWithAnimation(new FragmentSop());
+
+                } else {
+                    // Toast.makeText(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
+                    Toasty.error(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
+
+                }
+            }
+        });
+        cd_orders.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Utils.isNetworkConnectedMainThred(getActivity())) {
+
+                    //NearByHospital();
+
+                } else {
+                    // Toast.makeText(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
+                    Toasty.error(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
+
+                }
+            }
+        });
+        cd_training.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Utils.isNetworkConnectedMainThred(getActivity())) {
+                    //NearByHospital();
+
+                } else {
+                    // Toast.makeText(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
+                    Toasty.error(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
+
+                }
+            }
+        });
+        cd_help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Utils.isNetworkConnectedMainThred(getActivity())) {
+
+                    replaceFragmentWithAnimation(new FragmentHelp());
+
+                    //NearByHospital();
+
+                } else {
+                    // Toast.makeText(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
+                    Toasty.error(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
+
+                }
+            }
+        });
+        cd_comm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Utils.isNetworkConnectedMainThred(getActivity())) {
+
+                    //NearByHospital();
+
+                } else {
+                    // Toast.makeText(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
+                    Toasty.error(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
+
+                }
+            }
+        });
+        cd_fire.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Utils.isNetworkConnectedMainThred(getActivity())) {
+
+                    //NearByHospital();
+
+                } else {
+                    // Toast.makeText(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
+                    Toasty.error(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
+
+                }
+            }
+        });
+        cd_rescue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Utils.isNetworkConnectedMainThred(getActivity())) {
+
+                    //NearByHospital();
+
+                } else {
+                    // Toast.makeText(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
+                    Toasty.error(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
+
+                }
+            }
+        });
+        cd_firstaid.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Utils.isNetworkConnectedMainThred(getActivity())) {
+
+                    //NearByHospital();
+
+                } else {
+                    // Toast.makeText(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
+                    Toasty.error(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
+
+                }
+            }
+        });
 
         cd_hospital.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,6 +252,12 @@ public class DashboardFragment extends Fragment {
                 }
             }
         });
+       /* cd_extra.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(),"Sorry! No Data found",Toast.LENGTH_SHORT).show();
+            }
+        });*/
 
 
         return view;
@@ -147,6 +309,12 @@ public class DashboardFragment extends Fragment {
 
         }
 
+    }
+    public void replaceFragmentWithAnimation(Fragment fragment) {
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
+        transaction.replace(R.id.fragment_container, fragment);
+        transaction.commit();
     }
 
 }

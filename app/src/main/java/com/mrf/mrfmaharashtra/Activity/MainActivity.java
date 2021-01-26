@@ -1,6 +1,7 @@
 package com.mrf.mrfmaharashtra.Activity;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -9,21 +10,40 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.mrf.mrfmaharashtra.Fragment.DashboardFragment;
+import com.mrf.mrfmaharashtra.Fragment.FragmentCDOrgans;
+import com.mrf.mrfmaharashtra.Fragment.FragmentCdComm;
+import com.mrf.mrfmaharashtra.Fragment.FragmentContactus;
+import com.mrf.mrfmaharashtra.Fragment.FragmentDefence;
+import com.mrf.mrfmaharashtra.Fragment.FragmentDisaster;
+import com.mrf.mrfmaharashtra.Fragment.FragmentFire;
+import com.mrf.mrfmaharashtra.Fragment.FragmentFirstaid;
+import com.mrf.mrfmaharashtra.Fragment.FragmentHelp;
+import com.mrf.mrfmaharashtra.Fragment.FragmentOrders;
+import com.mrf.mrfmaharashtra.Fragment.FragmentRescue;
+import com.mrf.mrfmaharashtra.Fragment.FragmentSop;
+import com.mrf.mrfmaharashtra.Fragment.FragmentTraining;
+import com.mrf.mrfmaharashtra.Fragment.UserProfileFragment;
 import com.mrf.mrfmaharashtra.R;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener{
@@ -64,11 +84,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 shareIntent.putExtra(android.content.Intent.EXTRA_TEXT,app_url);
                 startActivity(Intent.createChooser(shareIntent, "Share via"));
 
-
             }
         });
 
-        tvHeaderText.setText("MRF POLICE MITRA");
+        tvHeaderText.setText(getString(R.string.app_name));
         replaceFragmentWithAnimation(new DashboardFragment());
 
         drawer.closeDrawer(GravityCompat.START);
@@ -127,92 +146,77 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = menuItem.getItemId();
         if (id == R.id.nav_home) {
             replaceFragmentWithAnimation( new DashboardFragment());
-        } else if (id == R.id.nav_org) {
-           // replaceFragmentWithAnimation( new YourRidingFragment());
-
-        }
-        else if (id == R.id.nav_sops) {
-           // replaceFragmentWithAnimation( new SupportFragment());
-
-        }
-        else if (id == R.id.nav_order) {
-            //replaceFragmentWithAnimation(new AboutUsFragment());
-        }
-        else if (id == R.id.nav_training) {
-            //replaceFragmentWithAnimation(new AboutUsFragment());
-        }
-        else if (id == R.id.nav_help) {
-            //replaceFragmentWithAnimation(new AboutUsFragment());
-        }
-        else if (id == R.id.nav_cdcom) {
-            //replaceFragmentWithAnimation(new AboutUsFragment());
-        }
-        else if (id == R.id.nav_fire) {
-            //replaceFragmentWithAnimation(new AboutUsFragment());
-        }
-        else if (id == R.id.nav_rescue) {
-            //replaceFragmentWithAnimation(new AboutUsFragment());
-        }
-        else if (id == R.id.nav_firstaid) {
-            //replaceFragmentWithAnimation(new AboutUsFragment());
-        }
-        else if (id == R.id.nav_disaster) {
-            //replaceFragmentWithAnimation(new AboutUsFragment());
-        }
-        else if (id == R.id.nav_selfdefence) {
-            //replaceFragmentWithAnimation(new AboutUsFragment());
-        }
-        else if (id == R.id.nav_contact) {
-            //replaceFragmentWithAnimation(new AboutUsFragment());
-        }
-        else if (id == R.id.nav_nearbyhospital) {
-            try {
-                String uri = "http://maps.google.com/maps?q=Hospitals";
-                Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));
-                intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
-                startActivity(intent);
-            }catch (ActivityNotFoundException e){
-                Uri uri=Uri.parse("https://play.google.com/store/apps/details?id=com.google.android.apps,maps");
-                Intent intent=new Intent(Intent.ACTION_VIEW,uri);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-
-            }
-
-        }
-        else if (id == R.id.nav_cdofc) {
-            try {
-                String uri = "http://maps.google.com/maps?q=civildefenceoffice";
-                Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));
-                intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
-                startActivity(intent);
-            }catch (ActivityNotFoundException e){
-                Uri uri=Uri.parse("https://play.google.com/store/apps/details?id=com.google.android.apps,maps");
-                Intent intent=new Intent(Intent.ACTION_VIEW,uri);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-
-            }
-        }
-        else if (id == R.id.nav_blog) {
-            //replaceFragmentWithAnimation(new AboutUsFragment());
-        }
-        else if (id == R.id.nav_apply) {
-            //replaceFragmentWithAnimation(new AboutUsFragment());
-        }
-        else if (id == R.id.nav_cert) {
-            //replaceFragmentWithAnimation(new AboutUsFragment());
         }
         else if (id == R.id.nav_policy) {
             //replaceFragmentWithAnimation(new AboutUsFragment());
         }
+        else if (id == R.id.nav_pofile) {
+            replaceFragmentWithAnimation(new UserProfileFragment());
+        }
         else if (id == R.id.nav_rate) {
-            //replaceFragmentWithAnimation(new AboutUsFragment());
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.blucor.vsfarm"));
+            startActivity(intent);
+
+        }else if (id == R.id.nav_logout) {
+            logout();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void logout() {
+
+        final Dialog dialog = new Dialog(this, android.R.style.Theme_Translucent_NoTitleBar);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.logout_dialog);
+        Window window = dialog.getWindow();
+        WindowManager.LayoutParams wlp = window.getAttributes();
+        wlp.gravity = Gravity.CENTER;
+        wlp.flags &= ~WindowManager.LayoutParams.FLAG_BLUR_BEHIND;
+        window.setAttributes(wlp);
+        dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+        dialog.show();
+        dialog.setCancelable(true);
+        dialog.setCanceledOnTouchOutside(true);
+
+
+        //findId
+        TextView tvYes = (TextView) dialog.findViewById(R.id.tvOk);
+        TextView tvCancel = (TextView) dialog.findViewById(R.id.tvcancel);
+        TextView tvReason = (TextView) dialog.findViewById(R.id.textView22);
+        TextView tvAlertMsg = (TextView) dialog.findViewById(R.id.tvAlertMsg);
+
+        //set value
+        tvAlertMsg.setText("Confirmation Alert..!!!");
+        tvReason.setText("Are you sure you want to logout?");
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        dialog.show();
+
+        //set listener
+        tvYes.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                overridePendingTransition(R.anim.slide_left, R.anim.slide_right);
+//                pref.set(AppSettings.CustomerID, "");
+//                pref.commit();
+                preferences.set("User_id","");
+                preferences.commit();
+                finishAffinity();
+                dialog.dismiss();
+            }
+        });
+
+        tvCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
     }
 
     @Override

@@ -26,6 +26,8 @@ public class SplashScreenActivity extends AppCompatActivity {
     ImageView imageSplash;
     TextView tvEnglish;
     TextView tvMarathi;
+    Preferences preferences;
+
 
     ArrayAdapter<String> selectLang;
 
@@ -40,6 +42,9 @@ public class SplashScreenActivity extends AppCompatActivity {
         tvEnglish=findViewById(R.id.tvEnglish);
         tvMarathi=findViewById(R.id.TvMarathi);
 
+        preferences=new Preferences(this);
+
+
 
         String language[] = {"English","मराठी"};
 
@@ -51,20 +56,55 @@ public class SplashScreenActivity extends AppCompatActivity {
         tvEnglish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if(preferences.get("User_id").isEmpty())
+                {
+                    Intent intent=new Intent(SplashScreenActivity.this,LoginActivity.class);
+                    startActivity(intent);
+                    LocaleHelper.setLocale(SplashScreenActivity.this,"en"); //for english;
+                }
+                else
+                {
+
+                    Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    LocaleHelper.setLocale(SplashScreenActivity.this,"en"); //for english;
+
+
+
+                }
+
                 //setLocale("en");
-                Intent intent=new Intent(SplashScreenActivity.this,MainActivity.class);
+                /*Intent intent=new Intent(SplashScreenActivity.this,MainActivity.class);
                 startActivity(intent);
                 LocaleHelper.setLocale(SplashScreenActivity.this,"en"); //for english;
-
+*/
             }
         });
         tvMarathi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if(preferences.get("User_id").isEmpty())
+                {
+                    Intent intent=new Intent(SplashScreenActivity.this,LoginActivity.class);
+                    startActivity(intent);
+                    LocaleHelper.setLocale(SplashScreenActivity.this,"mr"); //for english;
+
+                }
+                else
+                {
+
+                    Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    LocaleHelper.setLocale(SplashScreenActivity.this,"mr"); //for english;
+
+
+                }
                 //setLocale("en");
-                Intent intent=new Intent(SplashScreenActivity.this,MainActivity.class);
+               /* Intent intent=new Intent(SplashScreenActivity.this,SignupActivity.class);
                 startActivity(intent);
-                LocaleHelper.setLocale(SplashScreenActivity.this,"mr"); //for english;
+                LocaleHelper.setLocale(SplashScreenActivity.this,"mr"); //for english;*/
 
             }
         });
@@ -125,8 +165,8 @@ public class SplashScreenActivity extends AppCompatActivity {
             Configuration configuration = resources.getConfiguration();
             configuration.locale = locale;
 
-            resources.updateConfiguration(configuration, resources.getDisplayMetrics());
 
+            resources.updateConfiguration(configuration, resources.getDisplayMetrics());
 
         }
     }

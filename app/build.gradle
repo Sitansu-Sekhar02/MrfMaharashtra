@@ -51,6 +51,16 @@ dependencies {
 
     //Toasty
     implementation 'com.github.GrenderG:Toasty:1.2.5'
+    //circle imageview
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    //color generator
+    implementation 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
+
+    //validation awesome
+    implementation 'com.basgeekball:awesome-validation:4.2'
+
+    implementation 'com.karumi:dexter:6.0.2'
+
 
 
 
