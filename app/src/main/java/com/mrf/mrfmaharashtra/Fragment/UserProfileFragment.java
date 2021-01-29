@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 
+import com.bumptech.glide.Glide;
 import com.mrf.mrfmaharashtra.Activity.MainActivity;
 import com.mrf.mrfmaharashtra.Activity.Preferences;
 import com.mrf.mrfmaharashtra.Activity.Utils;
@@ -24,10 +26,12 @@ import es.dmoral.toasty.Toasty;
 
 public class UserProfileFragment extends Fragment {
     TextView userFirstName;
-    TextView userLastName;
+    TextView tvReg;
     TextView userContact;
+    TextView tvAddress;
     Preferences preferences;
     TextView tvChange;
+    ImageView profile;
 
     View view;
 
@@ -37,20 +41,28 @@ public class UserProfileFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_user_profile, container, false);
 
         userFirstName=view.findViewById(R.id.first_name);
-        userLastName=view.findViewById(R.id.last_name);
+        tvReg=view.findViewById(R.id.tvReg);
         userContact=view.findViewById(R.id.phone_number);
+        tvAddress=view.findViewById(R.id.tvAddress);
+
         tvChange=view.findViewById(R.id.tvChange);
+        profile=view.findViewById(R.id.profile_photo);
 
 
         preferences=new Preferences(getActivity());
 
         MainActivity.tvHeaderText.setText(getString(R.string.user_profile));
-        userContact.setText(preferences.get("Contact1"));
+        userContact.setText("Mob:+91-"+preferences.get("Contact1"));
         userFirstName.setText(preferences.get("Name"));
-        userLastName.setText(preferences.get("last_name"));
+        //tvReg.setText(preferences.get("Address"));
+        tvAddress.setText(preferences.get("Address"));
 
 
-       /* tvChange.setOnClickListener(new View.OnClickListener() {
+        Glide.with(getActivity())
+                .load(preferences.get("User_photo"))
+                .into(profile);
+
+        tvChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (Utils.isNetworkConnectedMainThred(getActivity())) {
@@ -60,11 +72,7 @@ public class UserProfileFragment extends Fragment {
                 }
 
             }
-        });*/
-
-
-
-
+        });
 
         MainActivity.iv_menu.setImageResource(R.drawable.ic_back);
         MainActivity.iv_menu.setOnClickListener(new View.OnClickListener() {
@@ -85,7 +93,5 @@ public class UserProfileFragment extends Fragment {
         transaction.replace(R.id.fragment_container, fragment);
         transaction.commit();
     }
-
-
 
 }

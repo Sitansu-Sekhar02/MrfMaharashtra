@@ -18,7 +18,7 @@ public class AllIndiaHelpline  extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_allindia_helpline, container, false);
+        view = inflater.inflate(R.layout.list_help_data, container, false);
 
        return view;
     }

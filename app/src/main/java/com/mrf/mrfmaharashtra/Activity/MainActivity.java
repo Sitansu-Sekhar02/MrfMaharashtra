@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.app.Dialog;
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -19,6 +18,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,25 +26,31 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 import com.google.android.material.navigation.NavigationView;
 import com.mrf.mrfmaharashtra.Fragment.DashboardFragment;
-import com.mrf.mrfmaharashtra.Fragment.FragmentCDOrgans;
-import com.mrf.mrfmaharashtra.Fragment.FragmentCdComm;
-import com.mrf.mrfmaharashtra.Fragment.FragmentContactus;
-import com.mrf.mrfmaharashtra.Fragment.FragmentDefence;
-import com.mrf.mrfmaharashtra.Fragment.FragmentDisaster;
-import com.mrf.mrfmaharashtra.Fragment.FragmentFire;
-import com.mrf.mrfmaharashtra.Fragment.FragmentFirstaid;
-import com.mrf.mrfmaharashtra.Fragment.FragmentHelp;
-import com.mrf.mrfmaharashtra.Fragment.FragmentOrders;
-import com.mrf.mrfmaharashtra.Fragment.FragmentRescue;
-import com.mrf.mrfmaharashtra.Fragment.FragmentSop;
-import com.mrf.mrfmaharashtra.Fragment.FragmentTraining;
+import com.mrf.mrfmaharashtra.Fragment.FragmentICard;
 import com.mrf.mrfmaharashtra.Fragment.UserProfileFragment;
 import com.mrf.mrfmaharashtra.R;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import es.dmoral.toasty.Toasty;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener{
 
@@ -54,6 +60,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static NavigationView navigationView;
     public static TextView tvHeaderText;
     Preferences  preferences;
+
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -150,8 +161,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         else if (id == R.id.nav_policy) {
             //replaceFragmentWithAnimation(new AboutUsFragment());
         }
+        else if (id == R.id.nav_idCard) {
+
+            replaceFragmentWithAnimation(new FragmentICard());
+
+
+        }
         else if (id == R.id.nav_pofile) {
-            replaceFragmentWithAnimation(new UserProfileFragment());
+            if (Utils.isNetworkConnectedMainThred(this)) {
+                replaceFragmentWithAnimation(new UserProfileFragment());
+
+
+            } else {
+                Toasty.error(this, "No Internet Connection!", Toast.LENGTH_LONG).show();
+
+            }
+        }
+        else if (id == R.id.nav_apply) {
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://mcfrakshak.in/reg_now.php"));
+            startActivity(intent);
+           // replaceFragmentWithAnimation(new ApplyOnlineDefence());
+
         }
         else if (id == R.id.nav_rate) {
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.blucor.vsfarm"));
@@ -166,8 +196,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-    private void logout() {
 
+
+    private void logout() {
         final Dialog dialog = new Dialog(this, android.R.style.Theme_Translucent_NoTitleBar);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.logout_dialog);

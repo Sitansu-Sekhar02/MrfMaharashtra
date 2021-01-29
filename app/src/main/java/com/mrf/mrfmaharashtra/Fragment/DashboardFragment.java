@@ -80,16 +80,14 @@ public class DashboardFragment extends Fragment {
         cd_disaster=view.findViewById(R.id.cd_disaster);
         cd_selfdef=view.findViewById(R.id.cd_selfdef);
         cd_contactus=view.findViewById(R.id.cd_contactus);
-        //cd_extra=view.findViewById(R.id.cd_extra);
 
         cd_orgn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (Utils.isNetworkConnectedMainThred(getActivity())) {
-                   // NearByHospital();
+                    replaceFragmentWithAnimation(new FragmentCDOrgans());
 
                 } else {
-                    // Toast.makeText(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
                     Toasty.error(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
 
                 }
@@ -99,11 +97,9 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (Utils.isNetworkConnectedMainThred(getActivity())) {
-                    //NearByHospital();
                     replaceFragmentWithAnimation(new FragmentSop());
 
                 } else {
-                    // Toast.makeText(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
                     Toasty.error(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
 
                 }
@@ -113,11 +109,9 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (Utils.isNetworkConnectedMainThred(getActivity())) {
-
-                    //NearByHospital();
+                    replaceFragmentWithAnimation(new FragmentOrders());
 
                 } else {
-                    // Toast.makeText(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
                     Toasty.error(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
 
                 }
@@ -127,10 +121,10 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (Utils.isNetworkConnectedMainThred(getActivity())) {
-                    //NearByHospital();
+                    replaceFragmentWithAnimation(new FragmentTraining());
+
 
                 } else {
-                    // Toast.makeText(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
                     Toasty.error(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
 
                 }
@@ -143,10 +137,8 @@ public class DashboardFragment extends Fragment {
 
                     replaceFragmentWithAnimation(new FragmentHelp());
 
-                    //NearByHospital();
 
                 } else {
-                    // Toast.makeText(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
                     Toasty.error(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
 
                 }
@@ -156,11 +148,9 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (Utils.isNetworkConnectedMainThred(getActivity())) {
-
-                    //NearByHospital();
+                    replaceFragmentWithAnimation(new FragmentCdComm());
 
                 } else {
-                    // Toast.makeText(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
                     Toasty.error(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
 
                 }
@@ -170,11 +160,9 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (Utils.isNetworkConnectedMainThred(getActivity())) {
-
-                    //NearByHospital();
+                    replaceFragmentWithAnimation(new FragmentFire());
 
                 } else {
-                    // Toast.makeText(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
                     Toasty.error(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
 
                 }
@@ -184,11 +172,9 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (Utils.isNetworkConnectedMainThred(getActivity())) {
-
-                    //NearByHospital();
+                    replaceFragmentWithAnimation(new FragmentRescue());
 
                 } else {
-                    // Toast.makeText(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
                     Toasty.error(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
 
                 }
@@ -198,11 +184,46 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (Utils.isNetworkConnectedMainThred(getActivity())) {
-
-                    //NearByHospital();
+                    replaceFragmentWithAnimation(new FragmentFirstaid());
 
                 } else {
-                    // Toast.makeText(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
+                    Toasty.error(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
+
+                }
+            }
+        });
+
+        cd_disaster.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Utils.isNetworkConnectedMainThred(getActivity())) {
+                    replaceFragmentWithAnimation(new FragmentDisaster());
+
+                } else {
+                    Toasty.error(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
+
+                }
+            }
+        });
+        cd_selfdef.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Utils.isNetworkConnectedMainThred(getActivity())) {
+                    replaceFragmentWithAnimation(new FragmentDefence());
+
+                } else {
+                    Toasty.error(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
+
+                }
+            }
+        });
+        cd_contactus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Utils.isNetworkConnectedMainThred(getActivity())) {
+                    replaceFragmentWithAnimation(new FragmentContactus());
+
+                } else {
                     Toasty.error(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
 
                 }
@@ -217,7 +238,6 @@ public class DashboardFragment extends Fragment {
                     NearByHospital();
 
                 } else {
-                    // Toast.makeText(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
                     Toasty.error(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
 
                 }
@@ -246,19 +266,11 @@ public class DashboardFragment extends Fragment {
                     NearByCDOffice();
 
                 } else {
-                    // Toast.makeText(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
                     Toasty.error(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
 
                 }
             }
         });
-       /* cd_extra.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getActivity(),"Sorry! No Data found",Toast.LENGTH_SHORT).show();
-            }
-        });*/
-
 
         return view;
 

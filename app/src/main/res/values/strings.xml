@@ -28,7 +28,7 @@
     <string name="apply">Apply Online For Civil Defence</string>
     <string name="police">Police Clearance certificate</string>
     <string name="privacy">Privacy policy</string>
-    <string name="organ">MRF-Orgn</string>
+    <string name="organ">MRF-ORGN</string>
     <string name="orderss">Orders/Circulars</string>
     <string name="training2">Training</string>
     <string name="help2">Help</string>
@@ -82,10 +82,22 @@
     <string name="alert">Confirmation Alert</string>
     <string name="SOPs">SOPs</string>
     <string name="user_profile">Your Profile</string>
-    <string name="change_profile">Change Profile Details</string>
+    <string name="change_profile">Update Profile Details</string>
     <string name="cont">Phone Number</string>
     <string name="upload">Please upload Photo</string>
     <string name="allindia">ALL INDIA HELPLINE</string>
     <string name="womenhelp">WOMEN HELPLINE</string>
     <string name="district">DISTRICT OFFICE HELPLINE</string>
+    <string name="registerno">Reg. Number</string>
+    <string name="update">Update Profile</string>
+    <string name="savedetails">Save Details</string>
+    <string name="passwordtext">Dear Customer\n Your password has been sent to your registered email id.\n Please check your email for confirmation and Do not share it to others.</string>
+    <string name="ok">Ok</string>
+    <string name="idcard">ID_Card</string>
+    <string name="mobile">Mobile</string>
+    <string name="fathername">Fathers Name</string>
+    <string name="mothername">Mothers Name</string>
+    <string name="pleaseapplyfirst">Please Apply First</string>
+    <string name="dob">Date of Birth</string>
+    <string name="gender">Gender</string>
 </resources>

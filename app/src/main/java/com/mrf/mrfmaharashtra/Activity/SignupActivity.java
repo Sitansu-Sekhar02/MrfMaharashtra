@@ -211,7 +211,7 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 dialog.cancel();
-                Toasty.error(SignupActivity.this, "Some error occurred -> " + error, Toast.LENGTH_SHORT).show();
+                Toasty.error(SignupActivity.this, "Some error occurred \n Please try again later", Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override

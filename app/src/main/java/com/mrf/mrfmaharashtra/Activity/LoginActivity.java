@@ -2,6 +2,8 @@ package com.mrf.mrfmaharashtra.Activity;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -9,6 +11,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,11 +38,14 @@ import es.dmoral.toasty.Toasty;
 public class LoginActivity extends AppCompatActivity {
 
     public static final String log_in = "http://mcfrakshak.in/mrfWebservices/userlogin.php";
+    public static final String forgot_password = "http://mcfrakshak.in/mrfWebservices/forgot_password.php";
+
 
     TextView tvLoginButton;
     public static int backPressed = 0;
 
     TextView tvSignupbtn;
+    TextView forgotPassword;
     EditText contact_no;
     EditText Password;
     Dialog dialog;
@@ -55,6 +61,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
         tvLoginButton=findViewById(R.id.tvLoginButton);
+        forgotPassword=findViewById(R.id.tvForgotPassword);
         tvSignupbtn=findViewById(R.id.tvSignupbtn);
 
         contact_no=findViewById(R.id.ContactEdit);
@@ -65,6 +72,20 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this,SignupActivity.class));
+            }
+        });
+
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Utils.isNetworkConnectedMainThred(LoginActivity.this)) {
+                    ProgressDialog();
+                    dialog.show();
+                    ForgotPassword();
+
+                } else {
+                    Toasty.error(LoginActivity.this, "No Internet Connection!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -102,6 +123,65 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    private void ForgotPassword() {
+        StringRequest request = new StringRequest(Request.Method.POST, forgot_password, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+                dialog.cancel();
+                Log.e("forgot password",response);
+
+                ProgressForgotPassword();
+                //Toasty.normal(LoginActivity.this, "Check your Email!Password has been sent to your Email!", Toast.LENGTH_LONG).show();
+
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                dialog.cancel();
+                Log.e("error_response", "" + error);
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> param = new HashMap<String, String>();
+                param.put("Email",contact_no.getText().toString());
+                return param;
+            }
+        };
+        RequestQueue requestQueue= Volley.newRequestQueue(LoginActivity.this);
+        requestQueue.add(request);
+
+    }
+
+    private void ProgressForgotPassword() {
+        final Dialog dialog = new Dialog(this, android.R.style.Theme_Translucent_NoTitleBar);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.password_popup);
+        Window window = dialog.getWindow();
+        WindowManager.LayoutParams wlp = window.getAttributes();
+        wlp.gravity = Gravity.CENTER;
+        wlp.flags &= ~WindowManager.LayoutParams.FLAG_BLUR_BEHIND;
+        window.setAttributes(wlp);
+        dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+        dialog.show();
+        dialog.setCancelable(true);
+        dialog.setCanceledOnTouchOutside(true);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
+
+        Button tvOk=dialog.findViewById(R.id.btnOk);
+        tvOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.cancel();
+
+            }
+        });
+    }
+
+
     private void ProgressDialog() {
         dialog = new Dialog(this, android.R.style.Theme_Translucent_NoTitleBar);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -136,14 +216,15 @@ public class LoginActivity extends AppCompatActivity {
                         String useremail=user.getString("Email");
                         String name=user.getString("Name");
                         String contact=user.getString("Contact1");
+                        String profile_photo=user.getString("User_photo");
+                        String res= profile_photo.replace("//","");
 
                         preferences.set("User_id",user_id);
                         preferences.set("Email",useremail);
                         preferences.set("Name",name);
                         preferences.set("Contact1",contact);
-
+                        preferences.set("User_photo",profile_photo);
                         preferences.commit();
-
 
                         Intent in=new Intent(LoginActivity.this,MainActivity.class);
                         startActivity(in);
@@ -160,7 +241,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 dialog.cancel();
-                Toasty.error(LoginActivity.this, "Some error occurred -> " + error, Toast.LENGTH_SHORT).show();
+                Toasty.error(LoginActivity.this, "Some error occurred \n Please try again later ", Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override

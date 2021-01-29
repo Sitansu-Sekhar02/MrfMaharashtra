@@ -22,107 +22,69 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_marginTop="@dimen/_30sdp"
-                    android:layout_width="@dimen/_100sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_width="@dimen/_120sdp"
+                    android:id="@+id/profile_photo"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_man_profile"
-                    android:layout_height="@dimen/_100sdp" />
+                    android:layout_height="@dimen/_120sdp" />
+                <TextView
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:id="@+id/first_name"
+                    android:layout_width="wrap_content"
+                    android:textSize="@dimen/_16sdp"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:textStyle="bold"
+                    android:text="@string/name"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textColor="#000"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/phone_number"
+                    android:layout_width="wrap_content"
+                    android:textSize="@dimen/_16sdp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"/>
+
+
+            </LinearLayout>
                 <View
-                    android:id="@+id/view"
-                    android:layout_marginTop="@dimen/_8sdp"
                     android:layout_width="match_parent"
                     android:layout_height="0.3dp"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/_10sdp"
-                    android:background="#afafaf" />
+                    android:background="#afafaf"/>
 
-            </LinearLayout>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_30sdp">
-
-                    <LinearLayout
-                        android:visibility="gone"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="@dimen/_17sdp"
-                            android:layout_height="@dimen/_17sdp"
-                            android:layout_marginLeft="@dimen/_10sdp"
-                            android:layout_marginTop="@dimen/_2sdp"
-                            android:background="@drawable/ic_baseline_location_on_24" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="@dimen/_5sdp"
-                            android:text="Your Details"
-                            android:id="@+id/tvName"
-                            android:textColor="#333333" />
-
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="@dimen/_15sdp"
-                        android:gravity="center"
-                        android:textStyle="bold"
-                        android:text="@string/change_profile"
-                        android:id="@+id/tvChange"
-                        android:textColor="@color/red_900"
-                        android:textSize="@dimen/_14sdp" />
-
-                </RelativeLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:orientation="vertical"
                     android:gravity="center"
-                    android:layout_margin="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_35sdp"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
                     android:layout_height="match_parent">
+
                     <TextView
-                        android:layout_width="match_parent"
-                        android:text="@string/name"
-                        android:textSize="@dimen/_14sdp"
+                        android:layout_width="wrap_content"
                         android:layout_margin="@dimen/_5sdp"
-                        android:layout_height="wrap_content"/>
-                    <TextView
-                        android:id="@+id/first_name"
-                        android:layout_width="match_parent"
-                        android:textSize="@dimen/_16sdp"
-                        android:drawableLeft="@drawable/ic_baseline_person_24"
-                        android:drawablePadding="@dimen/_5sdp"
+                        android:text="@string/address"
+                        android:textColor="#000000"
                         android:textStyle="bold"
-                        android:textColor="#000"
-                        android:layout_margin="@dimen/_5sdp"
-                        android:layout_height="wrap_content"/>
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.3dp"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="@dimen/_10sdp"
-                        android:background="#afafaf" />
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_margin="@dimen/_5sdp"
-                        android:text="Last Name"
-                        android:textSize="@dimen/_14sdp"
-                        android:layout_height="wrap_content"/>
-                    <TextView
-                        android:id="@+id/last_name"
-                        android:layout_width="match_parent"
-                        android:layout_margin="@dimen/_5sdp"
-                        android:textSize="@dimen/_16sdp"
-                        android:drawableLeft="@drawable/ic_baseline_person_24"
+                        android:drawableLeft="@drawable/ic_baseline_chrome_reader_mode_24"
+                        android:gravity="center"
                         android:drawablePadding="@dimen/_5sdp"
-                        android:textColor="#000"
-                        android:textStyle="bold"
+                        android:textSize="@dimen/_16sdp"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:id="@+id/tvAddress"
+                        android:layout_width="match_parent"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:textSize="@dimen/_14sdp"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:gravity="center"
                         android:layout_height="wrap_content"/>
                     <View
                         android:layout_width="match_parent"
@@ -131,29 +93,54 @@
                         android:layout_marginLeft="@dimen/_10sdp"
                         android:background="#afafaf"/>
                     <TextView
+                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_margin="@dimen/_5sdp"
-                        android:text="@string/cont"
+                        android:text="@string/registerno"
                         android:textSize="@dimen/_14sdp"
                         android:layout_height="wrap_content"/>
                     <TextView
-                        android:id="@+id/phone_number"
+                        android:visibility="gone"
+                        android:id="@+id/tvReg"
                         android:layout_width="match_parent"
+                        android:layout_margin="@dimen/_5sdp"
                         android:textSize="@dimen/_16sdp"
-                        android:textStyle="bold"
-                        android:drawableLeft="@drawable/ic_baseline_call_24"
+                        android:drawableLeft="@drawable/ic_baseline_format_list_numbered_24"
                         android:drawablePadding="@dimen/_5sdp"
                         android:textColor="#000"
-                        android:layout_margin="@dimen/_5sdp"
+                        android:textStyle="bold"
                         android:layout_height="wrap_content"/>
+
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="0.3dp"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="@dimen/_10sdp"
-                        android:background="#afafaf" />
+                        android:background="#afafaf"/>
+
 
                 </LinearLayout>
+                <RelativeLayout
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_width="match_parent"
+                    android:layout_margin="@dimen/_30sdp"
+                    android:layout_marginBottom="@dimen/_20sdp"
+                    android:layout_height="@dimen/_40sdp">
+
+                    <TextView
+                        android:background="@drawable/button_border"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:layout_centerInParent="true"
+                        android:text="@string/change_profile"
+                        android:id="@+id/tvChange"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_14sdp" />
+
+                </RelativeLayout>
+
             </LinearLayout>
 
 

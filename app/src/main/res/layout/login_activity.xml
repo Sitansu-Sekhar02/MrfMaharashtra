@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="@dimen/_8sdp"
                 android:layout_margin="@dimen/_5sdp"
-                app:cardBackgroundColor="@color/white_off"
+                app:cardBackgroundColor="#97DAD8D8"
                 android:elevation="@dimen/_10sdp">
                 <LinearLayout
                     android:id="@+id/llmain"

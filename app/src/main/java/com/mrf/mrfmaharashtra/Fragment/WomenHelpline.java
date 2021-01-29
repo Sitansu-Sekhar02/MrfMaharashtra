@@ -18,7 +18,7 @@ public class WomenHelpline extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.women_helpline, container, false);
+        view = inflater.inflate(R.layout.list_help_data, container, false);
 
        return view;
     }

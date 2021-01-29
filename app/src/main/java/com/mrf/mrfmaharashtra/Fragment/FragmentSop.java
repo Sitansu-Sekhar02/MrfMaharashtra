@@ -3,6 +3,7 @@ package com.mrf.mrfmaharashtra.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -83,12 +84,13 @@ public class FragmentSop extends Fragment {
 
             //get first letter of each String item
             String firstLetter= String.valueOf(personNames.get(position).toString().charAt(0));
+            Log.e("First letter",""+firstLetter);
             //String firstLetter = String.valueOf(personNames.get(position).charAt(0));
 
             ColorGenerator generator = ColorGenerator.MATERIAL; // or use DEFAULT
             // generate random color
-            int color = generator.getColor(personNames.get(position));
-            //int color = generator.getRandomColor();
+           // int color = generator.getColor(personNames.get(position));
+            int color = generator.getRandomColor();
 
             TextDrawable drawable = TextDrawable.builder()
                     .buildRound(firstLetter, color); // radius in px

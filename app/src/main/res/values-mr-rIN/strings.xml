@@ -84,8 +84,25 @@
     <string name="alert">पुष्टीकरण सूचना</string>
     <string name="SOPs">एसओपी</string>
     <string name="user_profile">आपले प्रोफाइल</string>
-    <string name="change_profile">प्रोफाइल तपशील बदला</string>
+    <string name="change_profile">प्रोफाइल अद्यतनित करा</string>
     <string name="cont">फोन नंबर</string>
     <string name="upload">कृपया फोटो अपलोड करा</string>
+    <string name="allindia">सर्व भारतीय मदत</string>
+    <string name="womenhelp">महिला मदत</string>
+    <string name="district">जिल्हा कार्यालय हेल्पलाइन</string>
+    <string name="registerno">रेग. संख्या</string>
+    <string name="update">प्रोफाइल अद्यतनित करा</string>
+    <string name="savedetails">तपशील जतन करा</string>
+    <string name="passwordtext">
+प्रिय ग्राहक \ n आपला संकेतशब्द आपल्या नोंदणीकृत ईमेल आयडीवर पाठविला गेला आहे. Please n कृपया पुष्टीकरणासाठी आपला ईमेल तपासा आणि ते इतरांना सामायिक करू नका.</string>
+    <string name="ok">ठीक आहे</string>
+
+    <string name="idcard">ओळखपत्र</string>
+    <string name="mobile">मोबाईल</string>
+    <string name="fathername">वडिलांचे नाव</string>
+    <string name="mothername">आईचे नाव</string>
+    <string name="pleaseapplyfirst">कृपया प्रथम अर्ज करा</string>
+    <string name="dob">जन्म तारीख</string>
+    <string name="gender">लिंग</string>
 
 </resources>

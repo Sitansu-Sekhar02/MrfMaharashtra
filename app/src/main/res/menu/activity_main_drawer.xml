@@ -19,6 +19,11 @@
         android:icon="@drawable/ic_newspaper"
         android:title="@string/news" />
     <item
+        android:id="@+id/nav_idCard"
+        android:icon="@drawable/ic_id_card"
+        android:title="@string/idcard" />
+    <item
+        android:visible="false"
         android:id="@+id/nav_notification"
         android:icon="@drawable/ic_notification"
         android:title="@string/notification" />
@@ -90,6 +95,10 @@
         android:id="@+id/nav_cert"
         android:icon="@drawable/ic_certificate"
         android:title="@string/police" />-->
+    <item
+        android:id="@+id/nav_apply"
+        android:icon="@drawable/ic_submit"
+        android:title="@string/apply" />
     <item
         android:id="@+id/nav_policy"
         android:icon="@drawable/ic_baseline_policy_24"

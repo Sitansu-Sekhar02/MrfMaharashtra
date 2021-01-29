@@ -18,7 +18,7 @@ public class DistrictOfficeFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_district_office, container, false);
+        view = inflater.inflate(R.layout.list_help_data, container, false);
 
        return view;
     }

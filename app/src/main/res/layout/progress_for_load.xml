@@ -15,11 +15,12 @@
                         android:id="@+id/gif"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_100sdp"
-                        android:src="@drawable/loader" />
+                        android:src="@drawable/mrfloader" />
                     <TextView
                         android:text="Please wait..."
                         android:textSize="@dimen/_14sdp"
                         android:textStyle="bold"
+                        android:textColor="#000"
                         android:layout_below="@+id/gif"
                         android:gravity="center"
                         android:layout_width="match_parent"
