@@ -15,7 +15,7 @@
                         android:id="@+id/gif"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_100sdp"
-                        android:src="@drawable/mrfloader" />
+                        android:src="@mipmap/mrfloader1" />
                     <TextView
                         android:text="Please wait..."
                         android:textSize="@dimen/_14sdp"

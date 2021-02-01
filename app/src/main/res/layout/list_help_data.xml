@@ -22,13 +22,14 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/_4sdp"
             android:orientation="horizontal">
-            <de.hdodenhof.circleimageview.CircleImageView
+            <ImageView
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/profile_image"
-                android:layout_width="@dimen/_65sdp"
-                android:src="@drawable/mrfloader"
-                android:layout_height="match_parent"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_gravity="center"
+                android:layout_height="@dimen/_50sdp"
                 android:contentDescription="@string/app_name"/>
 
 
@@ -36,6 +37,7 @@
             <LinearLayout
                 android:layout_width="@dimen/_190sdp"
                 android:orientation="vertical"
+                android:layout_marginLeft="@dimen/_4sdp"
                 android:layout_height="match_parent">
                 <TextView
                     android:id="@+id/data_name"

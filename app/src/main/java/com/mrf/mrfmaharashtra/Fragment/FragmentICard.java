@@ -111,7 +111,6 @@ public class FragmentICard extends Fragment {
                         for (int i = 0; i < jsonArray.length(); i++) {
 
                             JSONObject jsonObject = jsonArray.getJSONObject(i);
-
                             String name=jsonObject.getString("Name");
                         String father_name=jsonObject.getString("Father_Name");
                         String mother_name=jsonObject.getString("Mother_Name");

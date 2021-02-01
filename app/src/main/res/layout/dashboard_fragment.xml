@@ -6,33 +6,16 @@
     android:orientation="vertical"
     android:layout_height="match_parent">
 
-
     <ScrollView
         android:layout_width="match_parent"
-        android:background="@drawable/flag_gradient"
         android:layout_height="match_parent">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
+        android:background="@drawable/flag_gradient"
         android:layout_height="match_parent">
 
-        <RelativeLayout
-            android:visibility="gone"
-            android:layout_weight="0.3"
-            android:layout_width="match_parent"
-            android:layout_height="0dp">
-
-            <TextView
-                android:id="@+id/textGrid"
-                android:text="@string/mrf"
-                android:textSize="@dimen/_25sdp"
-                android:textColor="@color/black"
-                android:layout_centerInParent="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </RelativeLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="vertical"
@@ -88,8 +71,7 @@
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginLeft="@dimen/_5sdp"
                     app:cardElevation="@dimen/_8sdp"
-                    app:cardCornerRadius="@dimen/_10sdp"
-                    >
+                    app:cardCornerRadius="@dimen/_10sdp">
 
                     <LinearLayout
                         android:layout_gravity="center_horizontal|center_vertical"
@@ -164,38 +146,38 @@
                     android:id="@+id/cd_training"
                     android:layout_width="@dimen/_90sdp"
                     android:layout_height="@dimen/_120sdp"
-                    android:layout_marginBottom="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_5sdp"
-                    app:cardElevation="@dimen/_8sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
                     app:cardCornerRadius="@dimen/_10sdp"
-                    >
+                    app:cardElevation="@dimen/_8sdp">
 
                     <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal|center_vertical"
                         android:layout_margin="@dimen/_10sdp"
-                        android:orientation="vertical"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:orientation="vertical">
 
                         <ImageView
-                            android:src="@drawable/ic_baseline_accessibility_new_24"
-                            android:layout_gravity="center_horizontal"
                             android:layout_width="@dimen/_50sdp"
-                            android:layout_height="@dimen/_50sdp" />
+                            android:layout_height="@dimen/_50sdp"
+                            android:layout_gravity="center_horizontal"
+                            android:src="@drawable/ic_baseline_accessibility_new_24" />
 
                         <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
                             android:text="@string/training"
                             android:textAlignment="center"
                             android:textColor="@android:color/black"
                             android:textSize="@dimen/_12sdp"
-                            android:textStyle="bold"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_horizontal" />
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
+
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cd_help"
                     android:layout_width="@dimen/_90sdp"
@@ -623,32 +605,67 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cd_report"
+                    android:layout_width="@dimen/_90sdp"
+                    android:layout_height="@dimen/_120sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    app:cardElevation="@dimen/_8sdp"
+                    app:cardCornerRadius="@dimen/_10sdp">
 
+                    <LinearLayout
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:src="@drawable/ic_immigration"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_width="@dimen/_50sdp"
+                            android:layout_height="@dimen/_50sdp" />
+
+                        <TextView
+                            android:text="@string/report"
+                            android:textAlignment="center"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_12sdp"
+                            android:textStyle="bold"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
 
         </LinearLayout>
 
     </LinearLayout>
 
 </ScrollView>
-    <RelativeLayout
-        android:visibility="gone"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_above="@+id/courtesy"
-        android:background="#D7B3B1B1"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_15sdp"/>
-
-    </RelativeLayout>
-
+        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/courtesy"
         android:layout_width="match_parent"
-        android:layout_alignParentBottom="true"
         android:background="#D7B3B1B1"
-        android:layout_height="@dimen/_30sdp">
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
 
         <TextView
             android:text="Courtesy-Delhi Civil Defence          Courtesy-Delhi Civil Defence            Courtesy-Delhi Civil Defence            Courtesy-Delhi Civil Defence       Courtesy-Delhi Civil Defence             Courtesy-Delhi Civil Defence"
@@ -668,8 +685,45 @@
             android:focusable="true"
             android:focusableInTouchMode="true"
             android:freezesText="true"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:background="#E8979898"
+            android:layout_height="wrap_content">
 
+            <TextView
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:background="@drawable/ic_facebook"
+                android:layout_marginLeft="@dimen/_5sdp"/>
+            <TextView
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:background="@drawable/ic_twitter"
+                android:layout_marginLeft="@dimen/_5sdp"/>
+            <TextView
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:background="@drawable/ic_youtube"
+                android:layout_marginLeft="@dimen/_5sdp"/>
+            <TextView
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:background="@drawable/ic_chat"
+                android:layout_marginLeft="@dimen/_5sdp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textColor="#036BBD"
+                android:textStyle="bold"
+                android:textSize="@dimen/_12sdp"
+                android:text="@string/delhidefence"
+                android:layout_marginLeft="@dimen/_6sdp"/>
+
+        </LinearLayout>
     </LinearLayout>
 
+    </LinearLayout>
 
 </RelativeLayout>

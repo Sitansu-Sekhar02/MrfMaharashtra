@@ -79,12 +79,12 @@ public class FragmentSop extends Fragment {
 
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
-           // holder.data_name.setText((Integer) personNames.get(position));
+           holder.data_name.setText((CharSequence) personNames.get(position));
 
 
             //get first letter of each String item
             String firstLetter= String.valueOf(personNames.get(position).toString().charAt(0));
-            Log.e("First letter",""+firstLetter);
+
             //String firstLetter = String.valueOf(personNames.get(position).charAt(0));
 
             ColorGenerator generator = ColorGenerator.MATERIAL; // or use DEFAULT

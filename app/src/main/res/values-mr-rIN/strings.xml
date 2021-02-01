@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">पोलिस मित्र (एमआरएफ)</string>
+    <string name="app_name">एमआरएफ-पोलिस मित्र </string>
     <string name="home">मुख्यपृष्ठ</string>
     <string name="about">आमच्याबद्दल</string>
     <string name="Support">आधार</string>
@@ -10,7 +10,7 @@
     <string name="hindi">हिंदी</string>
     <string name="navigation_drawer_open">Open navigation drawe</string>
     <string name="navigation_drawer_close">Close navigation drawe</string>
-    <string name="mrf">पोलिस मित्र (एमआरएफ)</string>
+    <string name="mrf">एमआरएफ-पोलिस मित्र </string>
     <string name="training">प्रशिक्षण</string>
     <string name="sops">एसओपी</string>
     <string name="cdcom">एमआरएफ-कॉम</string>
@@ -104,5 +104,10 @@
     <string name="pleaseapplyfirst">कृपया प्रथम अर्ज करा</string>
     <string name="dob">जन्म तारीख</string>
     <string name="gender">लिंग</string>
+    <string name="delhidefence">"दिल्ली सिव्हिल डिफेन्स"</string>
+    <string name="chosephoto">प्रतिमा निवडा</string>
+    <string name="sendreport">अहवाल पाठवा</string>
+    <string name="description">अहवालाचे वर्णन येथे प्रविष्ट करा ...</string>
+
 
 </resources>

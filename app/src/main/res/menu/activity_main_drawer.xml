@@ -11,6 +11,7 @@
         android:icon="@drawable/ic_man_profile"
         android:title="@string/profile" />
     <item
+        android:visible="false"
         android:id="@+id/nav_report"
         android:icon="@drawable/ic_report"
         android:title="@string/report" />
@@ -97,7 +98,7 @@
         android:title="@string/police" />-->
     <item
         android:id="@+id/nav_apply"
-        android:icon="@drawable/ic_submit"
+        android:icon="@mipmap/ic_submit"
         android:title="@string/apply" />
     <item
         android:id="@+id/nav_policy"

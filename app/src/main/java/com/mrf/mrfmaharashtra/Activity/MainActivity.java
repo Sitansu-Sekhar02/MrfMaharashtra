@@ -76,7 +76,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         iv_menu.setOnClickListener(this);
         preferences=new Preferences(this);
-
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setItemIconTintList(null);

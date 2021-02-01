@@ -19,6 +19,7 @@ import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ReportFragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.mrf.mrfmaharashtra.Activity.Utils;
@@ -48,7 +49,7 @@ public class DashboardFragment extends Fragment {
     CardView cd_disaster;
     CardView cd_selfdef;
     CardView cd_contactus;
-    CardView cd_extra;
+    CardView cd_report;
 
 
 
@@ -80,6 +81,8 @@ public class DashboardFragment extends Fragment {
         cd_disaster=view.findViewById(R.id.cd_disaster);
         cd_selfdef=view.findViewById(R.id.cd_selfdef);
         cd_contactus=view.findViewById(R.id.cd_contactus);
+        cd_report=view.findViewById(R.id.cd_report);
+
 
         cd_orgn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -271,9 +274,20 @@ public class DashboardFragment extends Fragment {
                 }
             }
         });
+        cd_report.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Utils.isNetworkConnectedMainThred(getActivity())) {
+                    replaceFragmentWithAnimation(new FragmentReport());
+
+                } else {
+                    Toasty.error(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
+
+                }
+            }
+        });
 
         return view;
-
 
     }
 

@@ -18,16 +18,17 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
-            <de.hdodenhof.circleimageview.CircleImageView
+            <ImageView
+                android:layout_marginLeft="@dimen/_5sdp"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/profile_image"
-                android:layout_margin="@dimen/_5sdp"
-                android:layout_width="@dimen/_70sdp"
-                android:layout_height="match_parent"
-                android:contentDescription="@string/app_name"/>
+                android:layout_gravity="center"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp" />
 
             <TextView
                 android:id="@+id/data_name"
+                android:layout_marginLeft="@dimen/_10sdp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Hello World!"
