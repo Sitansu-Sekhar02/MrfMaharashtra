@@ -42,7 +42,9 @@ public class FragmentHelp extends Fragment {
         });
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.allindia)));
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.womenhelp)));
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.delhohospital)));
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.district)));
+
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
          adapter = new HelpLineAdapter(getActivity(),getChildFragmentManager(),
                 tabLayout.getTabCount());

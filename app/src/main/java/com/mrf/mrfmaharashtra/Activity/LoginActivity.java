@@ -181,7 +181,6 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-
     private void ProgressDialog() {
         dialog = new Dialog(this, android.R.style.Theme_Translucent_NoTitleBar);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);

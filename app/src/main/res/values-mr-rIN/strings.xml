@@ -108,6 +108,6 @@
     <string name="chosephoto">प्रतिमा निवडा</string>
     <string name="sendreport">अहवाल पाठवा</string>
     <string name="description">अहवालाचे वर्णन येथे प्रविष्ट करा ...</string>
-
+    <string name="place">अहवाल स्थान प्रविष्ट करा</string>
 
 </resources>

@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.mrf.mrfmaharashtra.Fragment.AllIndiaHelpline;
+import com.mrf.mrfmaharashtra.Fragment.DelhiHospitalHelpline;
 import com.mrf.mrfmaharashtra.Fragment.DistrictOfficeFragment;
 import com.mrf.mrfmaharashtra.Fragment.WomenHelpline;
 
@@ -31,6 +32,9 @@ public class HelpLineAdapter extends FragmentPagerAdapter {
                 WomenHelpline womenHelpline = new WomenHelpline();
                 return womenHelpline;
             case 2:
+                DelhiHospitalHelpline delhiHospitalHelpline = new DelhiHospitalHelpline();
+                return delhiHospitalHelpline;
+            case 3:
                 DistrictOfficeFragment districtOfficeFragment = new DistrictOfficeFragment();
                 return districtOfficeFragment;
             default:

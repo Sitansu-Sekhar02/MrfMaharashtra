@@ -104,4 +104,6 @@
     <string name="chosephoto">Choose Image</string>
     <string name="sendreport">Send Report</string>
     <string name="description">Enter report description here...</string>
+    <string name="place">Enter report location</string>
+    <string name="delhohospital">DELHI HOSPITAL</string>
 </resources>

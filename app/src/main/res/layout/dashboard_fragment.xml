@@ -19,6 +19,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="vertical"
+            android:layout_marginBottom="@dimen/_40sdp"
             android:layout_height="wrap_content">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -663,7 +664,7 @@
     <LinearLayout
         android:id="@+id/courtesy"
         android:layout_width="match_parent"
-        android:background="#D7B3B1B1"
+        android:background="#E2E4E2E2"
         android:orientation="vertical"
         android:layout_height="wrap_content">
 
@@ -687,26 +688,26 @@
             android:freezesText="true"/>
         <LinearLayout
             android:layout_width="match_parent"
-            android:background="#E8979898"
+            android:background="#0EAAF1"
             android:layout_height="wrap_content">
 
             <TextView
-                android:layout_width="@dimen/_40sdp"
+                android:layout_width="@dimen/_35sdp"
                 android:layout_height="@dimen/_35sdp"
                 android:background="@drawable/ic_facebook"
                 android:layout_marginLeft="@dimen/_5sdp"/>
             <TextView
-                android:layout_width="@dimen/_40sdp"
+                android:layout_width="@dimen/_35sdp"
                 android:layout_height="@dimen/_35sdp"
-                android:background="@drawable/ic_twitter"
+                android:background="@drawable/ic_instagram"
                 android:layout_marginLeft="@dimen/_5sdp"/>
             <TextView
-                android:layout_width="@dimen/_40sdp"
+                android:layout_width="@dimen/_35sdp"
                 android:layout_height="@dimen/_35sdp"
                 android:background="@drawable/ic_youtube"
                 android:layout_marginLeft="@dimen/_5sdp"/>
             <TextView
-                android:layout_width="@dimen/_40sdp"
+                android:layout_width="@dimen/_35sdp"
                 android:layout_height="@dimen/_35sdp"
                 android:background="@drawable/ic_chat"
                 android:layout_marginLeft="@dimen/_5sdp"/>
@@ -715,11 +716,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:textColor="#036BBD"
+                android:textColor="#ffffff"
                 android:textStyle="bold"
                 android:textSize="@dimen/_12sdp"
                 android:text="@string/delhidefence"
-                android:layout_marginLeft="@dimen/_6sdp"/>
+                android:layout_marginLeft="@dimen/_10sdp"/>
 
         </LinearLayout>
     </LinearLayout>

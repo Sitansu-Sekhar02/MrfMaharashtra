@@ -332,7 +332,6 @@ public class DashboardFragment extends Fragment {
             Intent intent=new Intent(Intent.ACTION_VIEW,uri);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
-
         }
 
     }

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/edit_border"
+    android:background="@drawable/background"
     android:layout_height="match_parent">
     <ScrollView
         android:layout_width="match_parent"
@@ -12,51 +12,76 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <ImageView
-            android:id="@+id/img"
-            android:layout_width="@dimen/_200sdp"
-            android:layout_height="@dimen/_180sdp"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:layout_centerHorizontal="true"
-            app:srcCompat="@drawable/ic_baseline_add_photo_alternate_24"
-            tools:ignore="VectorDrawableCompat" />
-        <Button
-            android:layout_below="@+id/img"
-            android:layout_width="@dimen/_100sdp"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:layout_marginTop="@dimen/_8sdp"
-            android:background="@drawable/button_border"
-            android:textColor="#fff"
-            android:layout_centerHorizontal="true"
-            android:textSize="@dimen/_14sdp"
-            android:textAllCaps="false"
-            android:text="@string/chosephoto"
-            android:id="@+id/browse"/>
+        <LinearLayout
+            android:background="@drawable/edit_border"
+            android:id="@+id/main"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_margin="@dimen/_15sdp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/img"
+                android:layout_width="@dimen/_200sdp"
+                android:layout_height="@dimen/_180sdp"
+                android:layout_centerHorizontal="true"
+                app:srcCompat="@drawable/ic_baseline_add_photo_alternate_24"
+                tools:ignore="VectorDrawableCompat" />
+            <Button
+                android:layout_below="@+id/img"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:background="@drawable/button_border"
+                android:textColor="#fff"
+                android:layout_centerHorizontal="true"
+                android:textSize="@dimen/_12sdp"
+                android:textAllCaps="false"
+                android:text="@string/chosephoto"
+                android:id="@+id/browse"/>
+        </LinearLayout>
 
         <EditText
             android:hint="@string/description"
-            android:id="@+id/tvReport"
+            android:id="@+id/edReport"
+            android:lines="8"
+            android:minLines="6"
+            android:gravity="top|left"
+            android:maxLines="10"
             android:background="@drawable/edit_border"
-            android:layout_below="@+id/browse"
+            android:layout_below="@+id/main"
+            android:inputType="textMultiLine"
+            android:imeOptions="actionNext"
             android:layout_width="match_parent"
-            android:gravity="start"
             android:layout_height="@dimen/_150sdp"
-            android:textSize="@dimen/_12sdp"
             android:layout_margin="@dimen/_15sdp"
             android:textColor="#000"/>
+        <EditText
+            android:background="@drawable/edit_border"
+            android:id="@+id/report_place"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:hint="@string/place"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:layout_below="@+id/edReport"/>
         <Button
-            android:layout_below="@+id/tvReport"
+            android:layout_below="@+id/report_place"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/sendreport"
+            android:textSize="@dimen/_14sdp"
             android:layout_marginLeft="@dimen/_50sdp"
             android:layout_marginRight="@dimen/_50sdp"
             android:layout_marginTop="@dimen/_20sdp"
             android:textColor="#ffffff"
+            android:textStyle="bold"
             android:layout_alignParentBottom="true"
             android:background="@color/colorPrimary"
-            android:id="@+id/upload"/>
+            android:id="@+id/upload_report"/>
     </RelativeLayout>
     </ScrollView>
 

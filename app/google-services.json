@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "636512086485",
+    "project_id": "mrf-policemitra",
+    "storage_bucket": "mrf-policemitra.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:636512086485:android:ff6831db137599990c355c",
+        "android_client_info": {
+          "package_name": "com.mrf.mrfmaharashtra"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "636512086485-0uj96pbcoh80i6vvc91av678mtr6qnn4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdHx-Gs_33DTadjX9wEvztCAjzeaRcdGs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "636512086485-0uj96pbcoh80i6vvc91av678mtr6qnn4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
