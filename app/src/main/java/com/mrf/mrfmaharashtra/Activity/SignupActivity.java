@@ -94,7 +94,6 @@ public class SignupActivity extends AppCompatActivity {
 
         preferences = new Preferences(this);
 
-
         editTextName = (EditText) findViewById(R.id.etName);
         editEmail = (EditText) findViewById(R.id.etEmail);
         editContact = (EditText) findViewById(R.id.etContact);
@@ -118,7 +117,6 @@ public class SignupActivity extends AppCompatActivity {
                                 intent.setType("image/*");
                                 startActivityForResult(Intent.createChooser(intent,"Browse Image"),1);
                             }
-
                             @Override
                             public void onPermissionDenied(PermissionDeniedResponse response) {
 
@@ -131,8 +129,6 @@ public class SignupActivity extends AppCompatActivity {
                         }).check();
             }
         });
-
-
 
 
         awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
@@ -222,8 +218,7 @@ public class SignupActivity extends AppCompatActivity {
                 parameters.put("Contact1", editContact.getText().toString());
                 parameters.put("Address", editAddress.getText().toString());
                 parameters.put("Password", editTextPassword.getText().toString());
-               // parameters.put("User_photo",etPhoto.getText().toString());
-                 parameters.put("upload",encodeImageString);
+                parameters.put("upload",encodeImageString);
 
                 return parameters;
             }

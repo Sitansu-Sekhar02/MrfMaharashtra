@@ -202,10 +202,9 @@ public class MyFirebaseService extends FirebaseMessagingService {
                 .setContentIntent(pendingIntent)
                 .setContentInfo(notification.getTitle())
                 .setLargeIcon(icon)
-                .setColor(Color.RED)
-                .setTimeoutAfter(30000)
+                .setColor(Color.BLUE)
                 .setPriority(Notification.PRIORITY_HIGH)
-                .setLights(Color.RED, 1000, 300)
+                .setLights(Color.BLUE, 1000, 300)
                 .setDefaults(Notification.DEFAULT_VIBRATE)
                 .setSmallIcon(R.drawable.logomrf);
 
@@ -268,10 +267,9 @@ public class MyFirebaseService extends FirebaseMessagingService {
                 .setContentIntent(pendingIntent)
                 .setContentInfo(title)
                 .setLargeIcon(icon)
-                .setTimeoutAfter(30000)
-                .setColor(Color.RED)
+                .setColor(Color.BLUE)
                 .setPriority(Notification.PRIORITY_HIGH)
-                .setLights(Color.RED, 1000, 300)
+                .setLights(Color.BLUE, 1000, 300)
                 .setDefaults(Notification.DEFAULT_VIBRATE)
                 .setSmallIcon(R.drawable.logomrf);
 

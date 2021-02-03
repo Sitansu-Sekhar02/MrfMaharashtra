@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.AuthFailureError;
@@ -25,6 +26,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.mrf.mrfmaharashtra.R;
 
 import org.json.JSONException;
@@ -50,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText Password;
     Dialog dialog;
     Preferences preferences;
-
+    String newToken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,6 +124,28 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);*/
             }
         });
+
+
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+                            Log.e("newToken", "Fetching FCM registration token failed", task.getException());
+                            return;
+                        }
+
+                        // Get new FCM registration token
+                        newToken = task.getResult();
+
+                        // Log and toast
+                        String msg = newToken;
+                        Log.e("newToken", msg);
+                        // Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_SHORT).show();
+                    }
+                });
+
 
     }
 

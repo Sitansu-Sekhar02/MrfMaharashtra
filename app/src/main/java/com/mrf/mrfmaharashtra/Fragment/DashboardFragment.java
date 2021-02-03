@@ -1,5 +1,6 @@
 package com.mrf.mrfmaharashtra.Fragment;
 
+import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
@@ -7,9 +8,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,18 +24,37 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ReportFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.mrf.mrfmaharashtra.Activity.Utils;
+import com.mrf.mrfmaharashtra.Model.SopsModel;
 import com.mrf.mrfmaharashtra.R;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import es.dmoral.toasty.Toasty;
 
 public class DashboardFragment extends Fragment {
+
+
+
 
     TextView courtexy;
     CardView cd_hospital;
@@ -53,7 +76,7 @@ public class DashboardFragment extends Fragment {
 
 
 
-
+    Dialog dialog;
 
     View view;
 
@@ -88,7 +111,8 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (Utils.isNetworkConnectedMainThred(getActivity())) {
-                    replaceFragmentWithAnimation(new FragmentCDOrgans());
+                    String id= String.valueOf(1);
+                    replaceFragmentWithAnimation(new FragmentCDOrgans(),id);
 
                 } else {
                     Toasty.error(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
@@ -100,7 +124,8 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (Utils.isNetworkConnectedMainThred(getActivity())) {
-                    replaceFragmentWithAnimation(new FragmentSop());
+                    String id= String.valueOf(2);
+                    replaceFragmentWithAnimation(new FragmentSop(),id);
 
                 } else {
                     Toasty.error(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
@@ -112,7 +137,8 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (Utils.isNetworkConnectedMainThred(getActivity())) {
-                    replaceFragmentWithAnimation(new FragmentOrders());
+                    String id= String.valueOf(3);
+                    replaceFragmentWithAnimation(new FragmentOrders(),id);
 
                 } else {
                     Toasty.error(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
@@ -124,7 +150,9 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (Utils.isNetworkConnectedMainThred(getActivity())) {
-                    replaceFragmentWithAnimation(new FragmentTraining());
+                    String id= String.valueOf(4);
+
+                    replaceFragmentWithAnimation(new FragmentTraining(),id);
 
 
                 } else {
@@ -137,9 +165,8 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (Utils.isNetworkConnectedMainThred(getActivity())) {
-
-                    replaceFragmentWithAnimation(new FragmentHelp());
-
+                    String id= String.valueOf(5);
+                    replaceFragmentWithAnimation(new FragmentHelp(),id);
 
                 } else {
                     Toasty.error(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
@@ -151,7 +178,9 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (Utils.isNetworkConnectedMainThred(getActivity())) {
-                    replaceFragmentWithAnimation(new FragmentCdComm());
+                    String id= String.valueOf(6);
+
+                    replaceFragmentWithAnimation(new FragmentCdComm(),id);
 
                 } else {
                     Toasty.error(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
@@ -163,7 +192,9 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (Utils.isNetworkConnectedMainThred(getActivity())) {
-                    replaceFragmentWithAnimation(new FragmentFire());
+                    String id= String.valueOf(7);
+
+                    replaceFragmentWithAnimation(new FragmentFire(),id);
 
                 } else {
                     Toasty.error(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
@@ -175,7 +206,9 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (Utils.isNetworkConnectedMainThred(getActivity())) {
-                    replaceFragmentWithAnimation(new FragmentRescue());
+                    String id= String.valueOf(8);
+
+                    replaceFragmentWithAnimation(new FragmentRescue(),id);
 
                 } else {
                     Toasty.error(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
@@ -187,7 +220,9 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (Utils.isNetworkConnectedMainThred(getActivity())) {
-                    replaceFragmentWithAnimation(new FragmentFirstaid());
+                    String id= String.valueOf(9);
+
+                     replaceFragmentWithAnimation(new FragmentFirstaid(),id);
 
                 } else {
                     Toasty.error(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
@@ -200,7 +235,9 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (Utils.isNetworkConnectedMainThred(getActivity())) {
-                    replaceFragmentWithAnimation(new FragmentDisaster());
+                    String id= String.valueOf(10);
+
+                     replaceFragmentWithAnimation(new FragmentDisaster(),id);
 
                 } else {
                     Toasty.error(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
@@ -212,7 +249,9 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (Utils.isNetworkConnectedMainThred(getActivity())) {
-                    replaceFragmentWithAnimation(new FragmentDefence());
+                    String id= String.valueOf(11);
+
+                    replaceFragmentWithAnimation(new FragmentDefence(),id);
 
                 } else {
                     Toasty.error(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
@@ -224,7 +263,9 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (Utils.isNetworkConnectedMainThred(getActivity())) {
-                    replaceFragmentWithAnimation(new FragmentContactus());
+                    String id= String.valueOf(12);
+
+                    replaceFragmentWithAnimation(new FragmentContactus(),id);
 
                 } else {
                     Toasty.error(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
@@ -278,7 +319,9 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (Utils.isNetworkConnectedMainThred(getActivity())) {
-                    replaceFragmentWithAnimation(new FragmentReport());
+                    String id= String.valueOf(16);
+
+                    replaceFragmentWithAnimation(new FragmentReport(),id);
 
                 } else {
                     Toasty.error(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
@@ -335,8 +378,11 @@ public class DashboardFragment extends Fragment {
         }
 
     }
-    public void replaceFragmentWithAnimation(Fragment fragment) {
+    public void replaceFragmentWithAnimation(Fragment fragment,String id) {
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        Bundle bundle = new Bundle();
+        bundle.putString("id", id);
+        fragment.setArguments(bundle);
         transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
         transaction.replace(R.id.fragment_container, fragment);
         transaction.commit();

@@ -66,7 +66,7 @@ public class NotificationUtils {
                 mContext);
 
         final Uri alarmSound = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE
-                + "://" + mContext.getPackageName() + "/raw/uber_driver_2019");
+                + "://" + mContext.getPackageName() + "/raw/mrf_sound");
 
         if (!TextUtils.isEmpty(imageUrl)) {
 
@@ -155,7 +155,7 @@ public class NotificationUtils {
     public void playNotificationSound() {
         try {
             Uri alarmSound = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE
-                    + "://" + mContext.getPackageName() + "/raw/uber_driver_2019");
+                    + "://" + mContext.getPackageName() + "/raw/mrf_sound");
             Ringtone r = RingtoneManager.getRingtone(mContext, alarmSound);
             r.play();
         } catch (Exception e) {
