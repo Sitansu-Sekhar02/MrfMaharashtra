@@ -70,7 +70,7 @@
     <string name="report">अहवाल द्या</string>
     <string name="photo">छायाचित्र</string>
     <string name="uploadphoto">फोटो अपलोड करा</string>
-    <string name="news"> न्यूज स्लेटर</string>
+    <string name="news"> न्यूज पत्र</string>
     <string name="notification">अधिसूचना</string>
     <string name="logout">बाहेर पडणे</string>
     <string name="invalid_name">कृपया वैध नाव प्रविष्ट करा</string>
@@ -96,7 +96,6 @@
     <string name="passwordtext">
 प्रिय ग्राहक \ n आपला संकेतशब्द आपल्या नोंदणीकृत ईमेल आयडीवर पाठविला गेला आहे. Please n कृपया पुष्टीकरणासाठी आपला ईमेल तपासा आणि ते इतरांना सामायिक करू नका.</string>
     <string name="ok">ठीक आहे</string>
-
     <string name="idcard">ओळखपत्र</string>
     <string name="mobile">मोबाईल</string>
     <string name="fathername">वडिलांचे नाव</string>
@@ -110,5 +109,8 @@
     <string name="description">अहवालाचे वर्णन येथे प्रविष्ट करा ...</string>
     <string name="place">अहवाल स्थान प्रविष्ट करा</string>
     <string name="delhohospital">दिल्ली हॉस्पिटल </string>
+    <string name="update_check">सुधारणा साठी तपासा</string>
+    <string name="newsdetails">बातमी तपशील</string>
+    <string name="nodata">या विभागात कोणताही डेटा उपलब्ध नाही असे दिसते आहे </string>
 
 </resources>

@@ -3,6 +3,7 @@ package com.mrf.mrfmaharashtra.Fragment;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -56,7 +57,7 @@ public class FragmentCDOrgans extends Fragment {
     RecyclerView recyclerView;
     CDOrgnAadapter mAdapter;
     Preferences preferences;
-
+    public static int backPressed = 0;
 
     Dialog dialog;
 
@@ -119,6 +120,7 @@ public class FragmentCDOrgans extends Fragment {
 
     }
 
+
     private void ApiCdOrgn() {
         StringRequest request = new StringRequest(Request.Method.POST, url_cdorgn, new Response.Listener<String>() {
 
@@ -136,15 +138,12 @@ public class FragmentCDOrgans extends Fragment {
                         String category_id=jsonObject.getString("cat_id");
                         String subCategory_id=jsonObject.getString("sub_catid");
                         String sub_catname=jsonObject.getString("sub_catname");
-                        //String pdf_content=jsonObject.getString("pdf_product");
+                        String pdf_content=jsonObject.getString("pdf_product");
 
-                        preferences.set("sub_catid",subCategory_id);
-                       // preferences.set("pdf_product",pdf_content);
-
-                        preferences.commit();
 
                         product.setSopsId(category_id);
                         product.setSubCategoryId(subCategory_id);
+                        product.setPdf_content(pdf_content);
                         product.setSopsName(sub_catname);
 
                         subcategorylist.add(product);
@@ -175,13 +174,15 @@ public class FragmentCDOrgans extends Fragment {
         requestQueue.add(request);
 
     }
-    public void replaceFragmentWithAnimation(Fragment fragment, String sub_id) {
+    public void replaceFragmentWithAnimation(Fragment fragment, String sub_id, String pdf_content) {
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
         Bundle bundle = new Bundle();
         bundle.putString("sub_id", sub_id);
+        bundle.putString("pdf_product", pdf_content);
         fragment.setArguments(bundle);
         transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
         transaction.replace(R.id.fragment_container, fragment);
+        transaction.addToBackStack(null);
         transaction.commit();
     }
 
@@ -191,6 +192,7 @@ public class FragmentCDOrgans extends Fragment {
         mAdapter = new CDOrgnAadapter(subcategorylist, getActivity());
         recyclerView.setAdapter(mAdapter);
     }
+
 
     public class CDOrgnAadapter extends  RecyclerView.Adapter<CDOrgnAadapter.ViewHolder> {
         //ArrayList source;
@@ -223,9 +225,13 @@ public class FragmentCDOrgans extends Fragment {
             holder.cd_SopsContent.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     String sub_id=mModel.get(position).getSubCategoryId();
+                    String pdf_content=mModel.get(position).getPdf_content();
+
                     Log.e("id" ,""+sub_id);
-                    replaceFragmentWithAnimation(new FragmentPdfContent(),sub_id);
+
+                   replaceFragmentWithAnimation(new FragmentPdfOrgn(),sub_id,pdf_content);
                 }
             });
 
@@ -280,5 +286,6 @@ public class FragmentCDOrgans extends Fragment {
 
 
     }
+
 
 }

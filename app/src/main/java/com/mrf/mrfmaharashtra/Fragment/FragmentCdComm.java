@@ -71,7 +71,7 @@ public class FragmentCdComm extends Fragment {
         preferences = new Preferences(getActivity());
         recyclerView = view.findViewById(R.id.recyclerView);
 
-        MainActivity.tvHeaderText.setText(getString(R.string.training));
+        MainActivity.tvHeaderText.setText(getString(R.string.cdcom));
         MainActivity.iv_menu.setImageResource(R.drawable.ic_back);
         MainActivity.iv_menu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -205,7 +205,7 @@ public class FragmentCdComm extends Fragment {
                 public void onClick(View v) {
                     String id=mModel.get(position).getSubCategoryId();
                     Log.e("id" ,""+id);
-                    replaceFragmentWithAnimation(new FragmentPdfContent(),id);
+                    replaceFragmentWithAnimation(new FragmentPdfOrgn(),id);
                 }
             });
 

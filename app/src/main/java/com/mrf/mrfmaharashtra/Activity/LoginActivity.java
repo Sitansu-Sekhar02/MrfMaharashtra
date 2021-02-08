@@ -241,6 +241,7 @@ public class LoginActivity extends AppCompatActivity {
                         String useremail=user.getString("Email");
                         String name=user.getString("Name");
                         String contact=user.getString("Contact1");
+                        String address=user.getString("Address");
                         String profile_photo=user.getString("User_photo");
                         String res= profile_photo.replace("//","");
 
@@ -248,6 +249,7 @@ public class LoginActivity extends AppCompatActivity {
                         preferences.set("Email",useremail);
                         preferences.set("Name",name);
                         preferences.set("Contact1",contact);
+                        preferences.set("Address",address);
                         preferences.set("User_photo",profile_photo);
                         preferences.commit();
 
@@ -256,7 +258,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     }
                     else{
-                        Toasty.error(getApplicationContext(), "Wrong userId or password", Toast.LENGTH_SHORT).show();
+                        Toasty.warning(getApplicationContext(), "Wrong userId or password", Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

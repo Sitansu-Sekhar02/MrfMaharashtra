@@ -2,6 +2,7 @@ package com.mrf.mrfmaharashtra.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,7 +57,10 @@ public class UserProfileFragment extends Fragment {
         userFirstName.setText(preferences.get("Name"));
         //tvReg.setText(preferences.get("Address"));
         tvAddress.setText(preferences.get("Address"));
+        Log.e("Name",preferences.get("Name"));
+        Log.e("Contact1",preferences.get("Contact1"));
 
+        Log.e("address",preferences.get("Address"));
 
         Glide.with(getActivity())
                 .load(preferences.get("User_photo"))

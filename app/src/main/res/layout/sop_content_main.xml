@@ -35,7 +35,8 @@
             android:id="@+id/shop"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_100sdp"
-            android:layout_marginBottom="10sp" />
+            android:layout_marginBottom="10sp"
+            android:src="@mipmap/no_data"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -44,7 +45,7 @@
             android:layout_marginRight="@dimen/_20sdp"
             android:gravity="center"
             android:textStyle="bold"
-            android:text="Looks like there aren't any\n ride in your history.\n PLease book a ride from Chalo Chale Cab!"
+            android:text="@string/nodata"
             android:textColor="#848484"
             android:textSize="15sp" />
 

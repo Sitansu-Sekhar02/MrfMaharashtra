@@ -7,6 +7,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Base64;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -151,6 +153,8 @@ public class FragmentReport extends Fragment {
         final String desc=description.getText().toString().trim();
 
         report_place=view.findViewById(R.id.report_place);
+
+
         final String place=report_place.getText().toString().trim();
         StringRequest request=new StringRequest(Request.Method.POST, report, new Response.Listener<String>() {
             @Override
@@ -184,6 +188,7 @@ public class FragmentReport extends Fragment {
         queue.add(request);
 
     }
+
     private void ProgressForSignup() {
         dialog = new Dialog(getActivity(), android.R.style.Theme_Translucent_NoTitleBar);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -195,6 +200,7 @@ public class FragmentReport extends Fragment {
         window.setAttributes(wlp);
         dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
         dialog.setCancelable(false);
+
     }
 
     @Override

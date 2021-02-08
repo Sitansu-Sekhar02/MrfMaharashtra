@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cd_content"
+        android:layout_width="match_parent"
+        app:cardCornerRadius="@dimen/_6sdp"
+        app:cardElevation="@dimen/_4sdp"
+        app:cardBackgroundColor="@color/white_off"
+        android:layout_height="@dimen/_65sdp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_marginLeft="@dimen/_5sdp"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/news_image"
+                android:layout_gravity="center"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tvhead"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Hello World!"
+                    android:gravity="center"
+                    android:textSize="@dimen/_14sdp"
+                    android:textColor="#000000"
+                    android:textStyle="bold" />
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/tvdesc"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Hello World!"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+
+    </androidx.cardview.widget.CardView>
+    <View
+        android:layout_below="@+id/cd_content"
+        android:layout_margin="@dimen/_5sdp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:background="#04EA0D"/>
+
+</RelativeLayout>

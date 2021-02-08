@@ -68,7 +68,7 @@
     <string name="report">REPORT</string>
     <string name="photo">Photo</string>
     <string name="uploadphoto">Upload photo</string>
-    <string name="news">News Slater</string>
+    <string name="news">News letter</string>
     <string name="notification">Notifications</string>
     <string name="logout">Logout</string>
     <string name="invalid_name">Please enter a valid name</string>
@@ -106,4 +106,7 @@
     <string name="description">Enter report description here...</string>
     <string name="place">Enter report location</string>
     <string name="delhohospital">DELHI HOSPITAL</string>
+    <string name="update_check">Check for Update</string>
+    <string name="newsdetails">News Details</string>
+    <string name="nodata">Looks like there aren\'t any\n data available in this section </string>
 </resources>

@@ -41,7 +41,9 @@ import com.bumptech.glide.Glide;
 import com.google.android.material.navigation.NavigationView;
 import com.mrf.mrfmaharashtra.Fragment.DashboardFragment;
 import com.mrf.mrfmaharashtra.Fragment.FragmentICard;
+import com.mrf.mrfmaharashtra.Fragment.FragmentNewsLetter;
 import com.mrf.mrfmaharashtra.Fragment.UserProfileFragment;
+import com.mrf.mrfmaharashtra.Model.NewsLetter;
 import com.mrf.mrfmaharashtra.R;
 
 import org.json.JSONException;
@@ -55,7 +57,7 @@ import es.dmoral.toasty.Toasty;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener{
 
     public static int backPressed = 0;
-    public static ImageView iv_menu,iv_share;
+    public static ImageView iv_menu,iv_share,iv_Notification;
     DrawerLayout drawer;
     public static NavigationView navigationView;
     public static TextView tvHeaderText;
@@ -72,6 +74,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         iv_menu = findViewById(R.id.iv_menu);
         iv_share=findViewById(R.id.iv_share);
+        iv_Notification=findViewById(R.id.ivNotification);
+
 
 
         iv_menu.setOnClickListener(this);
@@ -94,6 +98,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 shareIntent.putExtra(android.content.Intent.EXTRA_TEXT,app_url);
                 startActivity(Intent.createChooser(shareIntent, "Share via"));
 
+            }
+        });
+        iv_Notification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,ActivityNotifications.class);
+                startActivity(intent);
             }
         });
 
@@ -164,6 +175,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             replaceFragmentWithAnimation(new FragmentICard());
 
+        }
+        else if (id == R.id.nav_newsSlater) {
+
+            replaceFragmentWithAnimation(new FragmentNewsLetter());
 
         }
         else if (id == R.id.nav_pofile) {
@@ -186,6 +201,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.blucor.vsfarm"));
             startActivity(intent);
 
+        }
+        else if (id == R.id.nav_update) {
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.blucor.vsfarm"));
+            startActivity(intent);
+
         }else if (id == R.id.nav_logout) {
             logout();
         }
@@ -194,7 +214,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
 
 
     private void logout() {

@@ -206,7 +206,7 @@ public class FragmentTraining extends Fragment {
                 public void onClick(View v) {
                     String id=mModel.get(position).getSubCategoryId();
                     Log.e("id" ,""+id);
-                    replaceFragmentWithAnimation(new FragmentPdfContent(),id);
+                    replaceFragmentWithAnimation(new FragmentPdfOrgn(),id);
                 }
             });
 

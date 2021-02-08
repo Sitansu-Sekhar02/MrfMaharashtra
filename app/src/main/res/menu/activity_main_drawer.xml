@@ -110,9 +110,12 @@
         android:icon="@drawable/ic_baseline_star_24"
         android:title="@string/rate_us" />
     <item
+        android:id="@+id/nav_update"
+        android:icon="@drawable/ic_updated"
+        android:title="@string/update_check" />
+    <item
         android:id="@+id/nav_logout"
         android:icon="@drawable/ic_clicker"
         android:title="@string/logout" />
-
 
 </menu>

@@ -125,13 +125,13 @@ public class FragmentICard extends Fragment {
                         String pincode=jsonObject.getString("Pincode");
 
 
-                        preferences.set("Name",name);
-                        preferences.set("Email",email);
+                        preferences.set("Id_Name",name);
+                        preferences.set("Id_Email",email);
                         preferences.set("Father_Name",father_name);
                         preferences.set("Mother_Name",mother_name);
                         preferences.set("DOB",dob);
                         preferences.set("Gender",gender);
-                        preferences.set("Contact1",number);
+                        preferences.set("Id_Contact1",number);
                         preferences.set("User_address",address);
                         preferences.set("Taluka",taluka);
                         preferences.set("District",district);
@@ -140,9 +140,9 @@ public class FragmentICard extends Fragment {
                         preferences.commit();
 
                     }
-                    tvName.setText(preferences.get("Name"));
+                    tvName.setText(preferences.get("Id_Name"));
                     tvAddress.setText(preferences.get("User_address"));
-                    tvMail.setText(":"+preferences.get("Email"));
+                    tvMail.setText(":"+preferences.get("Id_Email"));
                     tvFather_name.setText(":"+preferences.get("Father_Name"));
                     tvMother_name.setText(":"+preferences.get("Mother_Name"));
                     dob.setText(":"+preferences.get("DOB"));
@@ -150,7 +150,7 @@ public class FragmentICard extends Fragment {
                     tvTaluka.setText(","+preferences.get("Taluka"));
                     tvDistrict.setText(","+preferences.get("District"));
                     tvPincode.setText(","+preferences.get("Pincode"));
-                    number.setText(":"+preferences.get("Contact1"));
+                    number.setText(":"+preferences.get("Id_Contact1"));
 
                     Glide.with(getActivity())
                             .load(preferences.get("Profile_photo"))

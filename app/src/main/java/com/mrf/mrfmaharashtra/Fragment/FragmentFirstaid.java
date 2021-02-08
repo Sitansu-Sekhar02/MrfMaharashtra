@@ -71,7 +71,7 @@ public class FragmentFirstaid extends Fragment {
         preferences = new Preferences(getActivity());
         recyclerView = view.findViewById(R.id.recyclerView);
 
-        MainActivity.tvHeaderText.setText(getString(R.string.training));
+        MainActivity.tvHeaderText.setText(getString(R.string.firstaid));
         MainActivity.iv_menu.setImageResource(R.drawable.ic_back);
         MainActivity.iv_menu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,12 +129,9 @@ public class FragmentFirstaid extends Fragment {
                         String category_id=jsonObject.getString("cat_id");
                         String subCategory_id=jsonObject.getString("sub_catid");
                         String sub_catname=jsonObject.getString("sub_catname");
-                        //String pdf_content=jsonObject.getString("pdf_product");
+                        String pdf_content=jsonObject.getString("pdf_product");
 
-                        preferences.set("sub_catid",subCategory_id);
-                        // preferences.set("pdf_product",pdf_content);
 
-                        preferences.commit();
 
                         product.setSopsId(category_id);
                         product.setSubCategoryId(subCategory_id);
@@ -204,8 +201,10 @@ public class FragmentFirstaid extends Fragment {
                 @Override
                 public void onClick(View v) {
                     String id=mModel.get(position).getSubCategoryId();
+                    String pdf_content=mModel.get(position).getPdf_content();
+
                     Log.e("id" ,""+id);
-                    replaceFragmentWithAnimation(new FragmentPdfContent(),id);
+                    replaceFragmentWithAnimation(new FragmentPdfFirstAid(),id,pdf_content);
                 }
             });
 
@@ -260,10 +259,12 @@ public class FragmentFirstaid extends Fragment {
 
 
     }
-    public void replaceFragmentWithAnimation(Fragment fragment, String id) {
+    public void replaceFragmentWithAnimation(Fragment fragment, String id,String pdf_content) {
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
         Bundle bundle = new Bundle();
         bundle.putString("id", id);
+        bundle.putString("pdf_content", pdf_content);
+
         fragment.setArguments(bundle);
         transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
         transaction.replace(R.id.fragment_container, fragment);

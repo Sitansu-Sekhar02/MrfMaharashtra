@@ -76,7 +76,8 @@ dependencies {
 
     implementation "com.google.firebase:firebase-messaging:21.0.1"
 
-
+    //pdf view
+    implementation 'es.voghdev.pdfviewpager:library:1.1.2'
 
 
 

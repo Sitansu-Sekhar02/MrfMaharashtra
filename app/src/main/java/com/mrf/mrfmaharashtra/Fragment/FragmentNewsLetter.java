@@ -33,9 +33,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 import com.mrf.mrfmaharashtra.Activity.MainActivity;
 import com.mrf.mrfmaharashtra.Activity.Preferences;
 import com.mrf.mrfmaharashtra.Activity.Utils;
+import com.mrf.mrfmaharashtra.Model.NewsLetter;
 import com.mrf.mrfmaharashtra.Model.SopsModel;
 import com.mrf.mrfmaharashtra.R;
 
@@ -50,13 +52,13 @@ import java.util.Map;
 
 import es.dmoral.toasty.Toasty;
 
-public class FragmentFire extends Fragment {
-    public static final String url_sops = "http://mcfrakshak.in/mrfWebservices/subCategory_list.php";
+public class FragmentNewsLetter extends Fragment {
+    public static final String url_newsletter = "http://mcfrakshak.in/mrfWebservices/fetch_news.php";
 
-    private List<SopsModel> subcategorylist;
+    private List<NewsLetter> newsLetter;
 
     RecyclerView recyclerView;
-    FireAdapter mAdapter;
+    NewsAdapter mAdapter;
     Preferences preferences;
     Dialog dialog;
     View view;
@@ -65,12 +67,12 @@ public class FragmentFire extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.sop_content_main, container, false);
 
-        subcategorylist = new ArrayList<>();
+        newsLetter = new ArrayList<>();
 
         preferences = new Preferences(getActivity());
         recyclerView = view.findViewById(R.id.recyclerView);
 
-        MainActivity.tvHeaderText.setText(getString(R.string.fire));
+        MainActivity.tvHeaderText.setText(getString(R.string.news));
         MainActivity.iv_menu.setImageResource(R.drawable.ic_back);
         MainActivity.iv_menu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,34 +114,31 @@ public class FragmentFire extends Fragment {
     }
 
     private void ApiFire() {
-        StringRequest request = new StringRequest(Request.Method.POST, url_sops, new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.POST, url_newsletter, new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response) {
                 dialog.cancel();
-                Log.e("subcategory_list", response);
+                Log.e("news_list", response);
                 try{
                     JSONArray jsonArray = new JSONArray(response);
                     for (int i = 0; i < jsonArray.length(); i++) {
 
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
 
-                        SopsModel product = new SopsModel();
-                        String category_id=jsonObject.getString("cat_id");
-                        String subCategory_id=jsonObject.getString("sub_catid");
-                        String sub_catname=jsonObject.getString("sub_catname");
-                        //String pdf_content=jsonObject.getString("pdf_product");
+                        NewsLetter news = new NewsLetter();
+                        String news_id=jsonObject.getString("id");
+                        String heading=jsonObject.getString("heading");
+                        String description=jsonObject.getString("content");
+                        String news_image=jsonObject.getString("img");
 
-                        preferences.set("sub_catid",subCategory_id);
-                        // preferences.set("pdf_product",pdf_content);
 
-                        preferences.commit();
+                        news.setNews_id(news_id);
+                        news.setNews_name(heading);
+                        news.setNews_description(description);
+                        news.setNews_image(news_image);
 
-                        product.setSopsId(category_id);
-                        product.setSubCategoryId(subCategory_id);
-                        product.setSopsName(sub_catname);
-
-                        subcategorylist.add(product);
+                        newsLetter.add(news);
                     }
 
                     setAdapter();
@@ -155,30 +154,23 @@ public class FragmentFire extends Fragment {
                 dialog.cancel();
                 Log.e("error_response", "" + error);
             }
-        }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> parameters = new HashMap<String, String>();
-                parameters.put("cat_id", getArguments().getString("id"));
-                return parameters;
-            }
-        };
+        });
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         requestQueue.add(request);
     }
     private void setAdapter() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(linearLayoutManager);
-        mAdapter = new FireAdapter(subcategorylist, getActivity());
+        mAdapter = new NewsAdapter(newsLetter, getActivity());
         recyclerView.setAdapter(mAdapter);
     }
-    public class FireAdapter extends  RecyclerView.Adapter<FireAdapter.ViewHolder> {
+    public class NewsAdapter extends  RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         //ArrayList source;
 
-        private List<SopsModel> mModel;
+        private List<NewsLetter> mModel;
         private Context mContext;
 
-        public FireAdapter(List<SopsModel> mModel, Context mContext) {
+        public NewsAdapter(List<NewsLetter> mModel, Context mContext) {
             this.mModel = mModel;
             this.mContext = mContext;
 
@@ -191,39 +183,30 @@ public class FragmentFire extends Fragment {
         }*/
 
         public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.list_data_content, parent, false));
+            return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_news_letter, parent, false));
 
 
         }
 
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
-            holder.data_name.setText( mModel.get(position).getSopsName());
-            holder.cd_SopsContent.setOnClickListener(new View.OnClickListener() {
+            holder.news_heading.setText( mModel.get(position).getNews_name());
+            holder.news_description.setText( mModel.get(position).getNews_description());
+            Glide.with(mContext)
+                    .load(mModel.get(position).getNews_image())
+                    .into(holder.newsPhoto);
+
+            holder.card_main.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String id=mModel.get(position).getSubCategoryId();
-                    Log.e("id" ,""+id);
-                    replaceFragmentWithAnimation(new FragmentPdfOrgn(),id);
+                    String id=mModel.get(position).getNews_id();
+                    String image=mModel.get(position).getNews_image();
+                    String desc=mModel.get(position).getNews_description();
+
+                    replaceFragmentWithAnimation(new FragmentNewsDetails(),id,image,desc);
                 }
             });
 
-
-            //get first letter of each String item
-            String firstLetter= String.valueOf(mModel.get(position).getSopsName().charAt(0));
-
-            //String firstLetter = String.valueOf(personNames.get(position).charAt(0));
-
-            ColorGenerator generator = ColorGenerator.MATERIAL; // or use DEFAULT
-            // generate random color
-            // int color = generator.getColor(personNames.get(position));
-            int color = generator.getRandomColor();
-
-            TextDrawable drawable = TextDrawable.builder()
-                    .buildRound(firstLetter, color); // radius in px
-
-            holder.profilePhoto.setImageDrawable(drawable);
-            holder.cd_SopsContent.setAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fads_transitions));
 
 
         }
@@ -242,16 +225,18 @@ public class FragmentFire extends Fragment {
 
 
         public class ViewHolder extends RecyclerView.ViewHolder {
-            ImageView profilePhoto;
-            TextView data_name;
-            CardView cd_SopsContent;
+            ImageView newsPhoto;
+            TextView news_heading;
+            TextView news_description;
+            CardView card_main;
 
 
             public ViewHolder(@NonNull View itemView) {
                 super(itemView);
-                profilePhoto = itemView.findViewById(R.id.profile_image);
-                data_name = itemView.findViewById(R.id.data_name);
-                cd_SopsContent=itemView.findViewById(R.id.sop_contentMain);
+                newsPhoto = itemView.findViewById(R.id.news_image);
+                news_heading = itemView.findViewById(R.id.tvhead);
+                news_description = itemView.findViewById(R.id.tvdesc);
+                card_main=itemView.findViewById(R.id.cd_content);
 
 
             }
@@ -259,10 +244,13 @@ public class FragmentFire extends Fragment {
 
 
     }
-    public void replaceFragmentWithAnimation(Fragment fragment, String id) {
+    public void replaceFragmentWithAnimation(Fragment fragment, String id, String image,String desc) {
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
         Bundle bundle = new Bundle();
         bundle.putString("id", id);
+        bundle.putString("image",image);
+        bundle.putString("desc",desc);
+
         fragment.setArguments(bundle);
         transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
         transaction.replace(R.id.fragment_container, fragment);

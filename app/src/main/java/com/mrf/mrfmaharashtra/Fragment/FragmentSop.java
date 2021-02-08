@@ -3,6 +3,7 @@ package com.mrf.mrfmaharashtra.Fragment;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -12,10 +13,8 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,7 +46,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -61,6 +59,7 @@ public class FragmentSop extends Fragment {
     private List<SopsModel> subcategorylist;
 
     RecyclerView recyclerView;
+    LinearLayout no_data;
     SopsAadapter mAdapter;
     Preferences preferences;
     Dialog dialog;
@@ -75,6 +74,7 @@ public class FragmentSop extends Fragment {
 
         preferences = new Preferences(getActivity());
         recyclerView = view.findViewById(R.id.recyclerView);
+        no_data=view.findViewById(R.id.empty);
 
         MainActivity.tvHeaderText.setText(getString(R.string.SOPs));
         MainActivity.iv_menu.setImageResource(R.drawable.ic_back);
@@ -120,16 +120,14 @@ public class FragmentSop extends Fragment {
                         String category_id=jsonObject.getString("cat_id");
                         String subCategory_id=jsonObject.getString("sub_catid");
                         String sub_catname=jsonObject.getString("sub_catname");
-                        //String pdf_content=jsonObject.getString("pdf_product");
+                        String pdf_content=jsonObject.getString("pdf_product");
 
-                        preferences.set("sub_catid",subCategory_id);
-                        // preferences.set("pdf_product",pdf_content);
-
-                        preferences.commit();
 
                         product.setSopsId(category_id);
                         product.setSubCategoryId(subCategory_id);
                         product.setSopsName(sub_catname);
+                        product.setPdf_content(pdf_content);
+
 
                         subcategorylist.add(product);
                     }
@@ -138,6 +136,13 @@ public class FragmentSop extends Fragment {
                 }
                 catch (JSONException e) {
                     Log.d("JSONException", e.toString());
+                }
+                if (subcategorylist.isEmpty()){
+                    no_data.setVisibility(View.VISIBLE);
+                    recyclerView.setVisibility(View.GONE);
+                } else {
+                    recyclerView.setVisibility(View.VISIBLE);
+                    no_data.setVisibility(View.GONE);
                 }
             }
 
@@ -212,8 +217,12 @@ public class FragmentSop extends Fragment {
                 @Override
                 public void onClick(View v) {
                     String id=mModel.get(position).getSubCategoryId();
-                    Log.e("id" ,""+id);
-                    replaceFragmentWithAnimation(new FragmentPdfContent(),id);
+                    String pdf_content=mModel.get(position).getPdf_content();
+
+                     Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(pdf_content));
+                     startActivity(browserIntent);
+
+                    //replaceFragmentWithAnimation(new FragmentPdfSops(),id,pdf_content);
                 }
             });
 
@@ -268,10 +277,12 @@ public class FragmentSop extends Fragment {
 
 
     }
-    public void replaceFragmentWithAnimation(Fragment fragment, String id) {
+    public void replaceFragmentWithAnimation(Fragment fragment, String pdf_content, String id) {
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
         Bundle bundle = new Bundle();
         bundle.putString("id", id);
+        bundle.putString("pdf_content", pdf_content);
+
         fragment.setArguments(bundle);
         transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
         transaction.replace(R.id.fragment_container, fragment);
