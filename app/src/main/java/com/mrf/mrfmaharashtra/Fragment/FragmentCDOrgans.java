@@ -1,6 +1,7 @@
 package com.mrf.mrfmaharashtra.Fragment;
 
 import android.app.Dialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -230,6 +231,19 @@ public class FragmentCDOrgans extends Fragment {
                     String pdf_content=mModel.get(position).getPdf_content();
 
                     Log.e("id" ,""+sub_id);
+
+                  /*  try
+                    {
+
+                        Intent intentUrl = new Intent(Intent.ACTION_VIEW);
+                        intentUrl.setDataAndType(Uri.parse(pdf_content), "application/pdf");
+                        intentUrl.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intentUrl);
+                    }
+                    catch (ActivityNotFoundException e)
+                    {
+                        Toast.makeText(getActivity(), "No PDF Viewer Installed", Toast.LENGTH_LONG).show();
+                    }*/
 
                    replaceFragmentWithAnimation(new FragmentPdfOrgn(),sub_id,pdf_content);
                 }

@@ -1,8 +1,10 @@
 package com.mrf.mrfmaharashtra.Fragment;
 
 import android.app.Dialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -136,6 +138,9 @@ public class FragmentFirstaid extends Fragment {
                         product.setSopsId(category_id);
                         product.setSubCategoryId(subCategory_id);
                         product.setSopsName(sub_catname);
+                        product.setPdf_content(pdf_content);
+
+
 
                         subcategorylist.add(product);
                     }
@@ -181,12 +186,7 @@ public class FragmentFirstaid extends Fragment {
             this.mContext = mContext;
 
         }
-        /*ArrayList personNames;
-        Context context;
-        public SopsAadapter(Context context, ArrayList personNames) {
-            this.context = context;
-            this.personNames = personNames;
-        }*/
+
 
         public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.list_data_content, parent, false));
@@ -204,6 +204,17 @@ public class FragmentFirstaid extends Fragment {
                     String pdf_content=mModel.get(position).getPdf_content();
 
                     Log.e("id" ,""+id);
+                   /* try
+                    {
+                        Intent intentUrl = new Intent(Intent.ACTION_VIEW);
+                        intentUrl.setDataAndType(Uri.parse(pdf_content), "application/pdf");
+                        intentUrl.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intentUrl);
+                    }
+                    catch (ActivityNotFoundException e)
+                    {
+                        Toast.makeText(getActivity(), "No PDF Viewer Installed", Toast.LENGTH_LONG).show();
+                    }*/
                     replaceFragmentWithAnimation(new FragmentPdfFirstAid(),id,pdf_content);
                 }
             });

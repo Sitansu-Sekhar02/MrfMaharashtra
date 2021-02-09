@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
@@ -39,37 +40,43 @@ public class FragmentPdfSelfDefence extends Fragment {
 
         Bundle b = getArguments();
         String sub_id = b.getString("sub_id");
-        String pdf_content=b.getString("pdf_product");
+        String pdf_content=b.getString("pdf_content");
 
 
         /*Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(pdf_content));
         startActivity(browserIntent);*/
 
-        /*webView = view.findViewById(R.id.webview);
-        webView.getSettings().setJavaScriptEnabled(true);
-        String pdf = pdf_content;
-        webView.loadUrl("http://drive.google.com/viewerng/viewer?embedded=true&url=" + pdf);*/
-
         webView = view.findViewById(R.id.webview);
         progressBar=view.findViewById(R.id.progressbar);
-        webView.getSettings().setJavaScriptEnabled(true);
 
-        String pdf = pdf_content;
-        webView.loadUrl("https://drive.google.com/viewerng/viewer?embedded=true&url=" + pdf);
+        WebSettings webSettings = webView.getSettings();
+
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.setWebViewClient(new Callback());
+        webSettings.setBuiltInZoomControls(true);
+        webView.setScrollBarStyle(View.SCROLLBARS_OUTSIDE_OVERLAY);
+
+        webView.getSettings().setBuiltInZoomControls(true);
+        webView.getSettings().setUseWideViewPort(true);
+        webView.getSettings().setLoadWithOverviewMode(true);
 
         webView.setWebViewClient(new WebViewClient(){
-
             public void onPageFinished(WebView view, String url) {
-               progressBar.setVisibility(View.GONE);
+                webView.loadUrl("javascript:(function() { " +
+                        "document.querySelector('[role=\"toolbar\"]').remove();})()");                if (view.getContentHeight() == 0)
+                    view.reload();
+                progressBar.setVisibility(View.GONE);
+
             }
         });
+        webView.loadUrl("https://docs.google.com/gview?embedded=true&url="+pdf_content );
 
         //MainActivity.tvHeaderText.setText(getString(R.string.selfdefence));
         MainActivity.iv_menu.setImageResource(R.drawable.ic_back);
         MainActivity.iv_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                replaceFragmentWithAnimation(new FragmentPdfSelfDefence());
+                replaceFragmentWithAnimation(new FragmentDefence());
                /* Intent i = new Intent(getActivity(), MainActivity.class);
                 startActivity(i);
                 getActivity().overridePendingTransition(R.anim.slide_left, R.anim.slide_right);
@@ -86,5 +93,12 @@ public class FragmentPdfSelfDefence extends Fragment {
         transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
         transaction.replace(R.id.fragment_container, fragment);
         transaction.commit();
+    }
+    private class Callback extends WebViewClient {
+        @Override
+        public boolean shouldOverrideUrlLoading(
+                WebView view, String url) {
+            return(false);
+        }
     }
 }

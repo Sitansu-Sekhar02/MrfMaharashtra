@@ -1,8 +1,10 @@
 package com.mrf.mrfmaharashtra.Fragment;
 
 import android.app.Dialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -130,16 +132,13 @@ public class FragmentTraining extends Fragment {
                         String category_id=jsonObject.getString("cat_id");
                         String subCategory_id=jsonObject.getString("sub_catid");
                         String sub_catname=jsonObject.getString("sub_catname");
-                        //String pdf_content=jsonObject.getString("pdf_product");
+                        String pdf_content=jsonObject.getString("pdf_product");
 
-                        preferences.set("sub_catid",subCategory_id);
-                        // preferences.set("pdf_product",pdf_content);
-
-                        preferences.commit();
 
                         product.setSopsId(category_id);
                         product.setSubCategoryId(subCategory_id);
                         product.setSopsName(sub_catname);
+                        product.setPdf_content(pdf_content);
 
                         subcategorylist.add(product);
                     }
@@ -205,8 +204,21 @@ public class FragmentTraining extends Fragment {
                 @Override
                 public void onClick(View v) {
                     String id=mModel.get(position).getSubCategoryId();
-                    Log.e("id" ,""+id);
-                    replaceFragmentWithAnimation(new FragmentPdfOrgn(),id);
+                    String pdf_content=mModel.get(position).getPdf_content();
+                    /*try
+                    {
+
+                        Intent intentUrl = new Intent(Intent.ACTION_VIEW);
+                        intentUrl.setDataAndType(Uri.parse(pdf_content), "application/pdf");
+                        intentUrl.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intentUrl);
+                    }
+                    catch (ActivityNotFoundException e)
+                    {
+                        Toast.makeText(getActivity(), "No PDF Viewer Installed", Toast.LENGTH_LONG).show();
+                    }*/
+
+                    replaceFragmentWithAnimation(new FragmentPdfTraining(),id,pdf_content);
                 }
             });
 
@@ -261,10 +273,12 @@ public class FragmentTraining extends Fragment {
 
 
     }
-    public void replaceFragmentWithAnimation(Fragment fragment, String id) {
+    public void replaceFragmentWithAnimation(Fragment fragment, String id,String pdf_content ) {
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
         Bundle bundle = new Bundle();
         bundle.putString("id", id);
+        bundle.putString("pdf_content", pdf_content);
+
         fragment.setArguments(bundle);
         transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
         transaction.replace(R.id.fragment_container, fragment);

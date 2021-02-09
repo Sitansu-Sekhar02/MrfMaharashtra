@@ -19,7 +19,7 @@ import com.mrf.mrfmaharashtra.Activity.MainActivity;
 import com.mrf.mrfmaharashtra.Activity.Preferences;
 import com.mrf.mrfmaharashtra.R;
 
-public class FragmentPdfComm extends Fragment {
+public class FragmentPdfContactUs extends Fragment {
 
     Preferences preferences;
     ProgressBar progressBar;
@@ -79,7 +79,7 @@ public class FragmentPdfComm extends Fragment {
         MainActivity.iv_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                replaceFragmentWithAnimation(new FragmentCdComm());
+                replaceFragmentWithAnimation(new FragmentContactus());
                /* Intent i = new Intent(getActivity(), MainActivity.class);
                 startActivity(i);
                 getActivity().overridePendingTransition(R.anim.slide_left, R.anim.slide_right);

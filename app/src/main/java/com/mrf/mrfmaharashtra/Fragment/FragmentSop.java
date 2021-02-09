@@ -197,12 +197,7 @@ public class FragmentSop extends Fragment {
             this.mContext = mContext;
 
         }
-        /*ArrayList personNames;
-        Context context;
-        public SopsAadapter(Context context, ArrayList personNames) {
-            this.context = context;
-            this.personNames = personNames;
-        }*/
+
 
         public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.list_data_content, parent, false));

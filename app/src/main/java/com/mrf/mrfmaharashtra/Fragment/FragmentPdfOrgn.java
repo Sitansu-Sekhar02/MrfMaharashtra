@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
@@ -59,19 +60,30 @@ public class FragmentPdfOrgn extends Fragment {
         webView = view.findViewById(R.id.webview);
         progressBar=view.findViewById(R.id.progressbar);
 
+        WebSettings webSettings = webView.getSettings();
+
         webView.getSettings().setJavaScriptEnabled(true);
-        String pdf = pdf_content;
-        webView.loadUrl("http://drive.google.com/viewerng/viewer?embedded=true&url=" + pdf);
+        webView.setWebViewClient(new Callback());
+        webSettings.setBuiltInZoomControls(true);
+        webView.setScrollBarStyle(View.SCROLLBARS_OUTSIDE_OVERLAY);
+
+        webView.getSettings().setBuiltInZoomControls(true);
+        webView.getSettings().setUseWideViewPort(true);
+        webView.getSettings().setLoadWithOverviewMode(true);
 
         webView.setWebViewClient(new WebViewClient(){
             public void onPageFinished(WebView view, String url) {
-                if (view.getContentHeight() == 0)
+                webView.loadUrl("javascript:(function() { " +
+                        "document.querySelector('[role=\"toolbar\"]').remove();})()");                if (view.getContentHeight() == 0)
                     view.reload();
-               progressBar.setVisibility(View.GONE);
+                progressBar.setVisibility(View.GONE);
+
             }
         });
+        webView.loadUrl("https://docs.google.com/gview?embedded=true&url="+pdf_content );
 
-       // MainActivity.tvHeaderText.setText(getString(R.string.selfdefence));
+
+        // MainActivity.tvHeaderText.setText(getString(R.string.selfdefence));
         MainActivity.iv_menu.setImageResource(R.drawable.ic_back);
         MainActivity.iv_menu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,6 +101,13 @@ public class FragmentPdfOrgn extends Fragment {
         transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
         transaction.replace(R.id.fragment_container, fragment);
         transaction.commit();
+    }
+    private class Callback extends WebViewClient {
+        @Override
+        public boolean shouldOverrideUrlLoading(
+                WebView view, String url) {
+            return(false);
+        }
     }
 
 }
