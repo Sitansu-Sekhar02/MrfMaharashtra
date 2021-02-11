@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1026893468058",
+    "project_id": "mrfmaharashtra-4a158",
+    "storage_bucket": "mrfmaharashtra-4a158.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1026893468058:android:d79a6b8678773c15f6ea23",
+        "android_client_info": {
+          "package_name": "com.mrf.mrfmaharashtra"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1026893468058-84huffoirfr8kgvf11bvpuoeicmg3492.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mrf.mrfmaharashtra",
+            "certificate_hash": "e7ae398800ceb4a073b8ac9fe314d6cdff0d9d03"
+          }
+        },
+        {
+          "client_id": "1026893468058-oouu00rj3ts0ok0q2lgcfmrtgmcvf2an.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLq9k1B9YqdXywu1-qBn7Syety4Gx2VIM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1026893468058-oouu00rj3ts0ok0q2lgcfmrtgmcvf2an.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
