@@ -201,8 +201,6 @@ public class FragmentFire extends Fragment {
                     String id=mModel.get(position).getSubCategoryId();
                     String pdf_content=mModel.get(position).getPdf_content();
 
-
-                    Log.e("id" ,""+id);
                     /*try
                     {
 

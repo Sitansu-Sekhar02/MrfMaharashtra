@@ -3,6 +3,7 @@ package com.mrf.mrfmaharashtra.Fragment;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -29,9 +30,13 @@ import com.mrf.mrfmaharashtra.Activity.Preferences;
 import com.mrf.mrfmaharashtra.Activity.Utils;
 import com.mrf.mrfmaharashtra.R;
 
+import java.util.Locale;
+
 import javax.security.auth.callback.Callback;
 
 import es.dmoral.toasty.Toasty;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class FragmentPdfOrgn extends Fragment {
 
@@ -42,7 +47,6 @@ public class FragmentPdfOrgn extends Fragment {
 
     Dialog dialog;
     String pdfFileName;
-
 
     View view;
     @Nullable
@@ -100,14 +104,17 @@ public class FragmentPdfOrgn extends Fragment {
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
         transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
         transaction.replace(R.id.fragment_container, fragment);
+        transaction.addToBackStack(null);
         transaction.commit();
     }
     private class Callback extends WebViewClient {
         @Override
         public boolean shouldOverrideUrlLoading(
                 WebView view, String url) {
-            return(false);
+                return(false);
         }
     }
+
+
 
 }

@@ -58,16 +58,15 @@
             android:layout_marginRight="@dimen/_40sdp"
             tools:ignore="VectorDrawableCompat" />
 
-        <ImageView
+        <TextView
             android:id="@+id/ivNotification"
             android:layout_toLeftOf="@+id/iv_share"
-            android:layout_width="@dimen/_20sdp"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_baseline_notifications_24"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/_15sdp"
-            app:srcCompat="@drawable/ic_baseline_notifications_24"
-            tools:ignore="VectorDrawableCompat" />
+            android:layout_marginRight="@dimen/_15sdp" />
 
         <TextView
             android:id="@+id/tvCount"

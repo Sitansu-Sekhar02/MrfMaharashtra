@@ -73,7 +73,7 @@ public class DashboardFragment extends Fragment {
     CardView cd_selfdef;
     CardView cd_contactus;
     CardView cd_report;
-
+    CardView cd_notice;
 
 
     Dialog dialog;
@@ -105,6 +105,8 @@ public class DashboardFragment extends Fragment {
         cd_selfdef=view.findViewById(R.id.cd_selfdef);
         cd_contactus=view.findViewById(R.id.cd_contactus);
         cd_report=view.findViewById(R.id.cd_report);
+        cd_notice=view.findViewById(R.id.cd_notice);
+
 
 
         cd_orgn.setOnClickListener(new View.OnClickListener() {
@@ -322,6 +324,20 @@ public class DashboardFragment extends Fragment {
                     String id= String.valueOf(16);
 
                     replaceFragmentWithAnimation(new FragmentReport(),id);
+
+                } else {
+                    Toasty.error(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();
+
+                }
+            }
+        });
+        cd_notice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Utils.isNetworkConnectedMainThred(getActivity())) {
+                    //String id= String.valueOf(16);
+
+                    //replaceFragmentWithAnimation(new FragmentReport(),id);
 
                 } else {
                     Toasty.error(getActivity(), "No Internet Connection!", Toast.LENGTH_LONG).show();

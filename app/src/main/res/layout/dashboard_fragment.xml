@@ -646,6 +646,42 @@
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cd_notice"
+                    android:layout_width="@dimen/_90sdp"
+                    android:layout_height="@dimen/_120sdp"
+                    android:layout_marginBottom="@dimen/_7sdp"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    app:cardElevation="@dimen/_8sdp"
+                    app:cardCornerRadius="@dimen/_10sdp">
+
+                    <LinearLayout
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:src="@drawable/ic_advertising"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_width="@dimen/_50sdp"
+                            android:layout_height="@dimen/_50sdp" />
+
+                        <TextView
+                            android:text="@string/notice"
+                            android:textAlignment="center"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_12sdp"
+                            android:textStyle="bold"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
 
             </LinearLayout>
 
@@ -718,7 +754,7 @@
                 android:gravity="center"
                 android:textColor="#ffffff"
                 android:textStyle="bold"
-                android:textSize="@dimen/_12sdp"
+                android:textSize="@dimen/_14sdp"
                 android:text="@string/delhidefence"
                 android:layout_marginLeft="@dimen/_10sdp"/>
 

@@ -50,7 +50,7 @@ public class NotificationUtils {
         if (TextUtils.isEmpty(message))
             return;
 
-        // mrf_sound icon
+        // mrf_soundss icon
         final int icon = R.drawable.logomrf;
 
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
@@ -66,7 +66,7 @@ public class NotificationUtils {
                 mContext);
 
         final Uri alarmSound = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE
-                + "://" + mContext.getPackageName() + "/raw/mrf_sound");
+                + "://" + mContext.getPackageName() + "/raw/notification");
 
         if (!TextUtils.isEmpty(imageUrl)) {
 
@@ -133,8 +133,8 @@ public class NotificationUtils {
     }
 
     /**
-     * Downloading push mrf_sound image before displaying it in
-     * the mrf_sound tray
+     * Downloading push mrf_soundss image before displaying it in
+     * the mrf_soundss tray
      */
     public Bitmap getBitmapFromURL(String strURL) {
         try {
@@ -151,11 +151,11 @@ public class NotificationUtils {
         }
     }
 
-    // Playing mrf_sound sound
+    // Playing mrf_soundss sound
     public void playNotificationSound() {
         try {
             Uri alarmSound = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE
-                    + "://" + mContext.getPackageName() + "/raw/mrf_sound");
+                    + "://" + mContext.getPackageName() + "/raw/notification");
             Ringtone r = RingtoneManager.getRingtone(mContext, alarmSound);
             r.play();
         } catch (Exception e) {
@@ -191,11 +191,12 @@ public class NotificationUtils {
         return isInBackground;
     }
 
-    // Clears mrf_sound tray messages
+    // Clears mrf_soundss tray messages
     public static void clearNotifications(Context context) {
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.cancelAll();
     }
+
 
     public static long getTimeMilliSec(String timeStamp) {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

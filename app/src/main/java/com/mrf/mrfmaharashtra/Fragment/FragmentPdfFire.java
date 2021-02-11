@@ -40,7 +40,7 @@ public class FragmentPdfFire extends Fragment {
 
         Bundle b = getArguments();
         String sub_id = b.getString("sub_id");
-        String pdf_content=b.getString("pdf_product");
+        String pdf_content=b.getString("pdf_content");
 
 
         /*Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(pdf_content));

@@ -165,7 +165,6 @@ public class SplashScreenActivity extends AppCompatActivity {
             Configuration configuration = resources.getConfiguration();
             configuration.locale = locale;
 
-
             resources.updateConfiguration(configuration, resources.getDisplayMetrics());
 
         }

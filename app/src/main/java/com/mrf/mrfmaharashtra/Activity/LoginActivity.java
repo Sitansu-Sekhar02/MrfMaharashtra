@@ -173,6 +173,8 @@ public class LoginActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> param = new HashMap<String, String>();
                 param.put("Email",contact_no.getText().toString());
+
+
                 return param;
             }
         };
@@ -276,6 +278,8 @@ public class LoginActivity extends AppCompatActivity {
                 Map<String, String> parameters = new HashMap<String, String>();
                 parameters.put("Contact1", contact_no.getText().toString());
                 parameters.put("Password", Password.getText().toString());
+                parameters.put("token_id",newToken);
+
                 return parameters;
             }
         };

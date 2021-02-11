@@ -109,4 +109,7 @@
     <string name="update_check">Check for Update</string>
     <string name="newsdetails">News Details</string>
     <string name="nodata">Looks like there aren\'t any\n data available in this section </string>
+    <string name="notice">Notice/Order</string>
+    <string name="pleasewait">Please wait...</string>
+    <string name="loading">While we load your data.</string>
 </resources>

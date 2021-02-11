@@ -71,7 +71,7 @@ public class FragmentContactus extends Fragment {
         preferences = new Preferences(getActivity());
         recyclerView = view.findViewById(R.id.recyclerView);
 
-        MainActivity.tvHeaderText.setText(getString(R.string.selfdefence));
+        MainActivity.tvHeaderText.setText(getString(R.string.contact));
         MainActivity.iv_menu.setImageResource(R.drawable.ic_back);
         MainActivity.iv_menu.setOnClickListener(new View.OnClickListener() {
             @Override

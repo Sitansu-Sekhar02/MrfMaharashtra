@@ -112,5 +112,8 @@
     <string name="update_check">सुधारणा साठी तपासा</string>
     <string name="newsdetails">बातमी तपशील</string>
     <string name="nodata">या विभागात कोणताही डेटा उपलब्ध नाही असे दिसते आहे </string>
+    <string name="notice">सूचना / आदेश</string>
+    <string name="pleasewait">कृपया थांबा...</string>
+    <string name="loading">आम्ही आपला डेटा लोड करीत असताना.</string>
 
 </resources>

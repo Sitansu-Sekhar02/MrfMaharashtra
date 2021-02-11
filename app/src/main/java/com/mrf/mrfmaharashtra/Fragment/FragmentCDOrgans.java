@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -48,9 +49,12 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import es.dmoral.toasty.Toasty;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class FragmentCDOrgans extends Fragment {
     public static final String url_cdorgn = "http://mcfrakshak.in/mrfWebservices/subCategory_list.php";
@@ -62,11 +66,13 @@ public class FragmentCDOrgans extends Fragment {
 
     Dialog dialog;
 
+
     View view;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.sop_content_main, container, false);
+
 
         subcategorylist = new ArrayList<>();
 
@@ -98,7 +104,8 @@ public class FragmentCDOrgans extends Fragment {
         return view;
     }
 
-   /* private void replaceFragmentWithAnimation(FragmentCDOrgans fragmentCDOrgans) {
+
+    /* private void replaceFragmentWithAnimation(FragmentCDOrgans fragmentCDOrgans) {
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
         transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
         transaction.replace(R.id.fragment_container, fragment);
@@ -183,7 +190,7 @@ public class FragmentCDOrgans extends Fragment {
         fragment.setArguments(bundle);
         transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
         transaction.replace(R.id.fragment_container, fragment);
-        transaction.addToBackStack(null);
+        //transaction.addToBackStack(null);
         transaction.commit();
     }
 
@@ -232,7 +239,7 @@ public class FragmentCDOrgans extends Fragment {
 
                     Log.e("id" ,""+sub_id);
 
-                  /*  try
+                    try
                     {
 
                         Intent intentUrl = new Intent(Intent.ACTION_VIEW);
@@ -243,9 +250,9 @@ public class FragmentCDOrgans extends Fragment {
                     catch (ActivityNotFoundException e)
                     {
                         Toast.makeText(getActivity(), "No PDF Viewer Installed", Toast.LENGTH_LONG).show();
-                    }*/
+                    }
 
-                   replaceFragmentWithAnimation(new FragmentPdfOrgn(),sub_id,pdf_content);
+                 //  replaceFragmentWithAnimation(new FragmentPdfOrgn(),sub_id,pdf_content);
                 }
             });
 
@@ -294,9 +301,9 @@ public class FragmentCDOrgans extends Fragment {
                 data_name = itemView.findViewById(R.id.data_name);
                 cd_SopsContent=itemView.findViewById(R.id.sop_contentMain);
 
-
             }
         }
+
 
 
     }

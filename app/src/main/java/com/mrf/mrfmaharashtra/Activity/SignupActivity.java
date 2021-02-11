@@ -132,7 +132,7 @@ public class SignupActivity extends AppCompatActivity {
 
 
         awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
-        awesomeValidation.addValidation(this, R.id.uploads, RegexTemplate.NOT_EMPTY, R.string.upload);
+       // awesomeValidation.addValidation(this, R.id.uploads, RegexTemplate.NOT_EMPTY, R.string.upload);
         awesomeValidation.addValidation(this, R.id.etName, RegexTemplate.NOT_EMPTY, R.string.invalid_name);
         awesomeValidation.addValidation(this, R.id.etContact, "[5-9]{1}[0-9]{9}$", R.string.invalid_PhoneNumber);
         awesomeValidation.addValidation(this, R.id.etEmail, Patterns.EMAIL_ADDRESS, R.string.invalid_Email);
@@ -218,7 +218,7 @@ public class SignupActivity extends AppCompatActivity {
                 parameters.put("Contact1", editContact.getText().toString());
                 parameters.put("Address", editAddress.getText().toString());
                 parameters.put("Password", editTextPassword.getText().toString());
-                parameters.put("upload",encodeImageString);
+               // parameters.put("upload",encodeImageString);
 
                 return parameters;
             }

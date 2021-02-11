@@ -57,10 +57,15 @@ import es.dmoral.toasty.Toasty;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener{
 
     public static int backPressed = 0;
-    public static ImageView iv_menu,iv_share,iv_Notification;
+    public static ImageView iv_menu,iv_share;
+
     DrawerLayout drawer;
     public static NavigationView navigationView;
     public static TextView tvHeaderText;
+    public static TextView tvCount;
+
+    public static TextView iv_Notification;
+
     Preferences  preferences;
 
 
@@ -74,9 +79,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         iv_menu = findViewById(R.id.iv_menu);
         iv_share=findViewById(R.id.iv_share);
+        tvCount=findViewById(R.id.tvCount);
+
         iv_Notification=findViewById(R.id.ivNotification);
-
-
 
         iv_menu.setOnClickListener(this);
         preferences=new Preferences(this);
@@ -84,6 +89,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setItemIconTintList(null);
         tvHeaderText = findViewById(R.id.tvHeaderText);
+
+       // tvCount.setText(preferences.get("count"));
+
 
         iv_share.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 String subject="Your subject here";
                 shareIntent.putExtra(Intent.EXTRA_SUBJECT,subject);
                 shareIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
-                String app_url = "https://play.google.com/store/apps/details?id=com.blucore.chalochale";
+                String app_url = "https://play.google.com/store/apps/details?id=com.mrf.mrfmaharashtra";
                 shareIntent.putExtra(android.content.Intent.EXTRA_TEXT,app_url);
                 startActivity(Intent.createChooser(shareIntent, "Share via"));
 
@@ -149,6 +157,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
         transaction.replace(R.id.fragment_container, fragment);
+        transaction.addToBackStack(null);
         transaction.commit();
     }
 
@@ -198,12 +207,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         }
         else if (id == R.id.nav_rate) {
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.blucor.vsfarm"));
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.mrf.mrfmaharashtra"));
             startActivity(intent);
 
         }
         else if (id == R.id.nav_update) {
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.blucor.vsfarm"));
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.mrf.mrfmaharashtra"));
             startActivity(intent);
 
         }else if (id == R.id.nav_logout) {

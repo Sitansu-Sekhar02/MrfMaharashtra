@@ -21,6 +21,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.mrf.mrfmaharashtra.Activity.ActivityNotifications;
+import com.mrf.mrfmaharashtra.Activity.MainActivity;
 import com.mrf.mrfmaharashtra.Activity.Preferences;
 import com.mrf.mrfmaharashtra.BuildConfig;
 import com.mrf.mrfmaharashtra.R;
@@ -49,6 +50,8 @@ public class MyFirebaseService extends FirebaseMessagingService {
     public  static  String riding_price;
     private  static  String address_driver;
     Preferences preferences;
+    int counter = 0;
+
 
 
     /**
@@ -63,22 +66,27 @@ public class MyFirebaseService extends FirebaseMessagingService {
     public void onMessageReceived(RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
         // TODO(developer): Handle FCM messages here.
-        // If the application is in the foreground handle both data and mrf_sound messages here.
+        // If the application is in the foreground handle both data and mrf_soundss messages here.
         // Also if you intend on generating your own notifications as a result of a received FCM
         // message, here is where that should be initiated. See sendNotification method below.
         RemoteMessage.Notification notification = remoteMessage.getNotification();
         Map<String, String> data = remoteMessage.getData();
 
-        preferences=new Preferences(this);
+       /* preferences=new Preferences(this);
+        counter = preferences.getInt("count");
+        int count=counter+1;
+        preferences.set("count", count);
+        preferences.commit();
 
+       // MainActivity.tvCount.setText(count);
+*/
 
-
-        // Check if message contains a mrf_sound payload.
+        // Check if message contains a mrf_soundss payload.
         if (remoteMessage.getNotification() != null)
         {
             Log.e(TAG, "Notification Body: " + remoteMessage.getNotification().getBody());
             sendNotification(notification, data);
-           // NotificationTime();
+            // NotificationTime();
         }
         // Check if message contains a data payload.
         if (remoteMessage.getData().size() > 0) {
@@ -95,7 +103,6 @@ public class MyFirebaseService extends FirebaseMessagingService {
 
     }
 
-
     private void handleDataMessage(JSONObject json) throws JSONException {
         Log.e(TAG, "push json: " + json.toString());
 
@@ -111,12 +118,10 @@ public class MyFirebaseService extends FirebaseMessagingService {
 //      boolean isBackground = data.getBoolean("is_background");
              imageUrl = data.getString("image");
              timestamp = data.getString("timestamp");
-             driver_id=data.getString("driver_id");
-             from_ads=data.getString("from_add");
-             to_ads=data.getString("to_add");
-             cust_userId=data.getString("customer_user_id");
-             user_contact_no=data.getString("user_contact_no");
-            riding_price=data.getString("price");
+             driver_id=data.getString("heading");
+             from_ads=data.getString("content");
+             to_ads=data.getString("img");
+             cust_userId=data.getString("date");
 
             // JSONObject payload = data.getJSONObject("payload");
 
@@ -127,9 +132,9 @@ public class MyFirebaseService extends FirebaseMessagingService {
             Log.e(TAG, "driver_id: " + driver_id);
             Log.e(TAG, "from_add: " + from_ads);
             Log.e(TAG, "to_add: " + to_ads);
-            Log.e(TAG, "customer_user_id: " + cust_userId);
-            Log.e(TAG, "user_contact_no: " + user_contact_no);
-            Log.e(TAG, "price: " + riding_price);
+//            Log.e(TAG, "customer_user_id: " + cust_userId);
+//            Log.e(TAG, "user_contact_no: " + user_contact_no);
+//            Log.e(TAG, "price: " + riding_price);
 
 
             if (!NotificationUtils.isAppIsInBackground(getApplicationContext())) {
@@ -140,13 +145,13 @@ public class MyFirebaseService extends FirebaseMessagingService {
                 pushNotification.putExtra("message", message);
                 LocalBroadcastManager.getInstance(this).sendBroadcast(pushNotification);
 
-               // Intent intent = new Intent(this, AcceptUserRideActivity.class);
-               // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                Intent intent = new Intent(this, ActivityNotifications.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
-               // play_notification(title,message,imageUrl,intent);
+                play_notification(title,message,imageUrl,intent);
 
             } else {
-                // app is in background, show the mrf_sound in mrf_sound tray
+                // app is in background, show the mrf_soundss in mrf_soundss tray
                 Intent resultIntent = new Intent(getApplicationContext(), ActivityNotifications.class);
                 resultIntent.putExtra("message", message);
 
@@ -156,7 +161,7 @@ public class MyFirebaseService extends FirebaseMessagingService {
 //        if (TextUtils.isEmpty(imageUrl)) {
 //          showNotificationMessage(getApplicationContext(), title, message, timestamp, resultIntent);
 //        } else {
-//          // image is present, show mrf_sound with image
+//          // image is present, show mrf_soundss with image
 //          showNotificationMessageWithBigImage(getApplicationContext(), title, message, timestamp, resultIntent, imageUrl);
 //        }
             }
@@ -173,7 +178,7 @@ public class MyFirebaseService extends FirebaseMessagingService {
         notificationUtils.showNotificationMessage(title, message, timeStamp, intent);
     }
     /**
-     * Showing mrf_sound with text and image
+     * Showing mrf_soundss with text and image
      */
     private void showNotificationMessageWithBigImage(Context context, String title, String message, String timeStamp, Intent intent, String imageUrl) {
         NotificationUtils notificationUtils = new NotificationUtils(context);
@@ -181,9 +186,9 @@ public class MyFirebaseService extends FirebaseMessagingService {
         notificationUtils.showNotificationMessage(title, message, timeStamp, intent, imageUrl);
     }
     /**
-     * Create and show a custom mrf_sound containing the received FCM message.
+     * Create and show a custom mrf_soundss containing the received FCM message.
      *
-     * @param notification FCM mrf_sound payload received.
+     * @param notification FCM mrf_soundss payload received.
      * @param data FCM data payload received.
      */
     private void sendNotification(RemoteMessage.Notification notification, Map<String, String> data) {
@@ -193,7 +198,15 @@ public class MyFirebaseService extends FirebaseMessagingService {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
 
-        final Uri NOTIFICATION_SOUND_URI = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://" + BuildConfig.APPLICATION_ID + "/" + R.raw.mrf_sound);
+         /* preferences=new Preferences(this);
+        counter = preferences.getInt("count");
+        int count=counter+1;
+        preferences.set("count", count);
+        preferences.commit();
+
+        MainActivity.tvCount.setText(count);
+*/
+        final Uri NOTIFICATION_SOUND_URI = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://" + BuildConfig.APPLICATION_ID + "/" + R.raw.notification);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, "channel_id")
                 .setContentTitle(notification.getTitle())
                 .setContentText(notification.getBody())
@@ -242,13 +255,7 @@ public class MyFirebaseService extends FirebaseMessagingService {
         notificationManager.notify(0, notificationBuilder.build());
         //removeNotification(id);
 
-        /*Handler h = new Handler();
-        long delayInMilliseconds = 30000;
-        h.postDelayed(new Runnable() {
-            public void run() {
-                notificationManager.cancel(0);
-            }
-        }, delayInMilliseconds);*/
+
     }
 
 
@@ -258,7 +265,7 @@ public class MyFirebaseService extends FirebaseMessagingService {
         Bitmap icon = BitmapFactory.decodeResource(getResources(), R.drawable.logomrf);
 
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
-        final Uri NOTIFICATION_SOUND_URI = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://" + BuildConfig.APPLICATION_ID + "/" + R.raw.mrf_sound);
+        final Uri NOTIFICATION_SOUND_URI = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://" + BuildConfig.APPLICATION_ID + "/" + R.raw.notification);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, "channel_id")
                 .setContentTitle(title)
                 .setContentText(message)
@@ -290,7 +297,7 @@ public class MyFirebaseService extends FirebaseMessagingService {
 
         // Notification Channel is required for Android O and above
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            Uri sound = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://" + getPackageName() + "/" + R.raw.mrf_sound);
+            Uri sound = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://" + getPackageName() + "/" + R.raw.notification);
 
             AudioAttributes attributes = new AudioAttributes.Builder()
                     .setUsage(AudioAttributes.USAGE_NOTIFICATION)
@@ -321,16 +328,9 @@ public class MyFirebaseService extends FirebaseMessagingService {
 
         notificationManager.notify(0, note);
 
-       /* Handler h = new Handler();
-        long delayInMilliseconds = 30000;
-        h.postDelayed(new Runnable() {
-            public void run() {
-                notificationManager.cancel(id);
-            }
-        }, delayInMilliseconds);
-*/
 
-        // play mrf_sound sound
+
+        // play mrf_soundss sound
         NotificationUtils notificationUtils = new NotificationUtils(getApplicationContext());
         notificationUtils.playNotificationSound();
     }
