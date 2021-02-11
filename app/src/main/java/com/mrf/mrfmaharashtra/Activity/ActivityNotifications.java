@@ -176,6 +176,10 @@ public class ActivityNotifications extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
+                    //MainActivity.tvCount.setText(""+preferences.set("count",0));
+                    //Log.e("zero",""+preferences.getInt("count"));
+
+
                     Intent intent = new Intent(getBaseContext(), NotificationDetails.class);
                     intent.putExtra("news_image",mModel.get(position).getNotification_img());
                     Log.e("newsnews",""+mModel.get(position).getNotification_img());

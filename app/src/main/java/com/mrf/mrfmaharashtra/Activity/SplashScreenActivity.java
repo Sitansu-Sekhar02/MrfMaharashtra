@@ -70,6 +70,9 @@ public class SplashScreenActivity extends AppCompatActivity {
                     startActivity(intent);
                     LocaleHelper.setLocale(SplashScreenActivity.this,"en"); //for english;
 
+//                    preferences.set("count", 0);
+//                    preferences.commit();
+
 
 
                 }

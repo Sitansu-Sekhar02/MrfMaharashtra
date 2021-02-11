@@ -90,7 +90,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setItemIconTintList(null);
         tvHeaderText = findViewById(R.id.tvHeaderText);
 
-       // tvCount.setText(preferences.get("count"));
+
+        tvCount.setText(""+preferences.getInt("count"));
+        Log.e("counter",""+preferences.getInt("count"));
 
 
         iv_share.setOnClickListener(new View.OnClickListener() {

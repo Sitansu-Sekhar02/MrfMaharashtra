@@ -50,7 +50,7 @@ public class MyFirebaseService extends FirebaseMessagingService {
     public  static  String riding_price;
     private  static  String address_driver;
     Preferences preferences;
-    int counter = 0;
+
 
 
 
@@ -72,14 +72,21 @@ public class MyFirebaseService extends FirebaseMessagingService {
         RemoteMessage.Notification notification = remoteMessage.getNotification();
         Map<String, String> data = remoteMessage.getData();
 
-       /* preferences=new Preferences(this);
-        counter = preferences.getInt("count");
-        int count=counter+1;
-        preferences.set("count", count);
+        preferences=new Preferences(this);
+        int counter = preferences.getInt("count");
+        Log.e("count",""+counter);
+        counter=counter+1;
+        Log.e("count",""+counter);
+        preferences.set("count", counter);
         preferences.commit();
 
+
+
+        //int count=counter++;
+       // Log.e("count",""+count);
+
+
        // MainActivity.tvCount.setText(count);
-*/
 
         // Check if message contains a mrf_soundss payload.
         if (remoteMessage.getNotification() != null)
@@ -152,7 +159,7 @@ public class MyFirebaseService extends FirebaseMessagingService {
 
             } else {
                 // app is in background, show the mrf_soundss in mrf_soundss tray
-                Intent resultIntent = new Intent(getApplicationContext(), ActivityNotifications.class);
+                Intent resultIntent = new Intent(getApplicationContext(), MainActivity.class);
                 resultIntent.putExtra("message", message);
 
                 play_notification(title,message,imageUrl,resultIntent);
@@ -194,7 +201,7 @@ public class MyFirebaseService extends FirebaseMessagingService {
     private void sendNotification(RemoteMessage.Notification notification, Map<String, String> data) {
         Bitmap icon = BitmapFactory.decodeResource(getResources(), R.drawable.logomrf);
 
-        Intent intent = new Intent(this, ActivityNotifications.class);
+        Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
 

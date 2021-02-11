@@ -30,6 +30,7 @@ public class Preferences {
 	public Preferences set(String key, String value){
 	
 		_editor.putString(key, value);
+		//_editor.commit();
 		return this;
 	}
 	
